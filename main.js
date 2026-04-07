@@ -168,7 +168,7 @@ window.enviarCotizacion = function () {
   const empresa = document.getElementById('cotEmpresa').value || 'No indicada';
   const nota    = document.getElementById('cotNota').value    || 'Sin notas';
   const msg = `🌐 *Cotización — Millesvc Studio*\n\n📋 *Tipo:* ${tipo}\n💰 *Presupuesto:* ${presup}\n\n👤 *Nombre:* ${nombre}\n📱 *Tel:* ${tel}\n✉️ *Email:* ${email}\n🏢 *Empresa:* ${empresa}\n\n📝 *Notas:* ${nota}`;
-  window.open(`https://wa.me/56912345678?text=${encodeURIComponent(msg)}`, '_blank');
+  window.open(`https://wa.me/56990643785?text=${encodeURIComponent(msg)}`, '_blank');
   document.querySelectorAll('.cotizar-page').forEach(p => p.style.display = 'none');
   document.getElementById('cotizarSteps').style.display  = 'none';
   document.getElementById('cotizarSuccess').style.display = 'block';
@@ -182,5 +182,5 @@ window.enviarContacto = function () {
   const servicio = document.getElementById('ctcServicio')?.value || 'No indicado';
   const mensaje  = document.getElementById('ctcMensaje')?.value  || 'Sin mensaje';
   const txt = `👋 *Consulta — Millesvc Studio*\n\n*Nombre:* ${nombre}\n*Tel:* ${tel}\n*Email:* ${email}\n*Servicio:* ${servicio}\n*Mensaje:* ${mensaje}`;
-  window.open(`https://wa.me/56912345678?text=${encodeURIComponent(txt)}`, '_blank');
+  window.open(`https://wa.me/56990643785?text=${encodeURIComponent(txt)}`, '_blank');
 };
