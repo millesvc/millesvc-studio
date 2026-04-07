@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Servicios | Millesvc Studio</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    #servicios-main { padding: 6rem 5%; background: var(--blanco); }
+    .srv-full-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 2rem; margin-top: 3.5rem; }
+    .srv-full-card {
+      background: linear-gradient(145deg, var(--blanco2), var(--blanco));
+      border: 1.5px solid rgba(0,200,248,.15); border-radius: var(--radius-lg);
+      padding: 2.5rem; display: flex; gap: 1.8rem; align-items: flex-start;
+      transition: all .35s; cursor: none; position: relative; overflow: hidden;
+    }
+    .srv-full-card::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:3px;
+      background: linear-gradient(90deg, var(--cyan), var(--neon), var(--turquesa));
+      transform: scaleX(0); transform-origin:left; transition: transform .35s;
+    }
+    .srv-full-card:hover { box-shadow: 0 16px 48px rgba(0,180,224,.18); border-color: rgba(0,200,248,.4); transform: translateY(-4px); }
+    .srv-full-card:hover::before { transform: scaleX(1); }
+    .srv-full-icon {
+      width: 60px; height: 60px; flex-shrink: 0; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(0,200,248,.18), rgba(0,201,177,.1));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; border: 1.5px solid rgba(0,200,248,.25);
+    }
+    .srv-full-body h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: .6rem; }
+    .srv-full-body p { font-size: .9rem; color: var(--gris); line-height: 1.7; }
+    .srv-features { list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: .4rem; }
+    .srv-features li { font-size: .85rem; color: var(--gris); display: flex; gap: .5rem; align-items: center; }
+    .srv-features li::before { content: '✓'; color: var(--cyan); font-weight: 800; flex-shrink: 0; }
+    .srv-full-price {
+      margin-top: 1.3rem; padding-top: 1.3rem;
+      border-top: 1px solid rgba(0,200,248,.12);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: .8rem;
+    }
+    .srv-full-price .precio { font-size: 1.25rem; font-weight: 900; color: var(--cyan2); }
+    .srv-full-price a { font-size: .83rem; font-weight: 700; color: var(--cyan2); text-decoration: none; transition: color .2s; }
+    .srv-full-price a:hover { color: var(--neon); }
+
+    /* PAQUETES */
+    #paquetes { padding: 6rem 5%; background: var(--blanco2); }
+    .pkg-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3.5rem; }
+    .pkg-card {
+      background: var(--blanco); border: 1.5px solid rgba(0,200,248,.15);
+      border-radius: var(--radius-lg); padding: 2.5rem; text-align: center;
+      transition: all .35s; position: relative; overflow: hidden;
+    }
+    .pkg-card.featured {
+      background: linear-gradient(145deg, var(--oscuro) 0%, #0a3a55 100%);
+      border-color: var(--cyan); color: #fff;
+      box-shadow: 0 20px 56px rgba(0,100,180,.28);
+    }
+    .pkg-card.featured .pkg-name { color: var(--neon); }
+    .pkg-card.featured .pkg-price { color: #fff; }
+    .pkg-card.featured .pkg-desc { color: rgba(255,255,255,.65); }
+    .pkg-card.featured .pkg-features li { color: rgba(255,255,255,.8); }
+    .pkg-card.featured .pkg-features li::before { color: var(--neon); }
+    .pkg-popular {
+      position: absolute; top: 1.2rem; right: 1.2rem;
+      background: linear-gradient(135deg, var(--cyan), var(--neon));
+      color: var(--oscuro); font-size: .7rem; font-weight: 800;
+      padding: .25rem .7rem; border-radius: 50px; letter-spacing: .05em;
+    }
+    .pkg-card:not(.featured):hover { transform: translateY(-6px); box-shadow: var(--sombra-cyan); border-color: rgba(0,200,248,.4); }
+    .pkg-name { font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--cyan2); margin-bottom: .8rem; }
+    .pkg-price { font-size: 2.5rem; font-weight: 900; color: var(--oscuro); line-height: 1; letter-spacing: -.04em; }
+    .pkg-price small { font-size: .9rem; font-weight: 500; color: var(--gris); }
+    .pkg-desc { font-size: .88rem; color: var(--gris); margin: .8rem 0 1.5rem; line-height: 1.5; }
+    .pkg-features { list-style: none; text-align: left; margin-bottom: 2rem; display: flex; flex-direction: column; gap: .7rem; }
+    .pkg-features li { font-size: .88rem; display: flex; gap: .6rem; align-items: flex-start; }
+    .pkg-features li::before { content: '✓'; color: var(--cyan); font-weight: 800; flex-shrink: 0; margin-top: .05rem; }
+
+    .faq-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 1px; }
+    .faq-item { background: var(--blanco); border-radius: 10px; overflow: hidden; margin-bottom: .8rem; border: 1px solid rgba(0,200,248,.12); }
+    .faq-q {
+      padding: 1.2rem 1.5rem; font-weight: 700; cursor: none;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: color .2s;
+    }
+    .faq-q:hover { color: var(--cyan2); }
+    .faq-q .faq-icon { font-size: 1.2rem; transition: transform .3s; flex-shrink: 0; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a { padding: 0 1.5rem; max-height: 0; overflow: hidden; font-size: .9rem; color: var(--gris); line-height: 1.7; transition: max-height .4s ease, padding .3s; }
+    .faq-item.open .faq-a { max-height: 200px; padding: 0 1.5rem 1.2rem; }
+
+    @media (max-width: 900px) {
+      .srv-full-grid { grid-template-columns: 1fr; }
+      .pkg-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav id="navbar">
+  <a href="index.html" class="logo">Mille<em>svc</em></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="servicios.html">Servicios</a></li>
+    <li><a href="proyectos.html">Proyectos</a></li>
+    <li><a href="sobremi.html">Sobre mí</a></li>
+    <li><a href="cotizar.html">Cotizar</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+  </ul>
+  <a href="cotizar.html" class="nav-cta">Cotizar →</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="section-tag">Servicios</div>
+    <h1 class="page-hero h1">Soluciones web<br><span>a tu medida</span></h1>
+    <p>Cada proyecto es único. Creo sitios que no solo se ven bien, sino que generan resultados reales para tu negocio.</p>
+  </div>
+</section>
+
+<section id="servicios-main">
+  <div class="srv-full-grid">
+    <div class="srv-full-card reveal">
+      <div class="srv-full-icon">🚀</div>
+      <div class="srv-full-body">
+        <h3>Landing Page</h3>
+        <p>Una sola página de alto impacto diseñada para convertir visitas en clientes o leads. Perfecta para campañas de marketing, lanzamientos o servicios específicos.</p>
+        <ul class="srv-features">
+          <li>Diseño 100% personalizado</li>
+          <li>Formulario de contacto o WhatsApp</li>
+          <li>Optimizada para Google (SEO)</li>
+          <li>Versión móvil perfecta</li>
+          <li>Entrega en 5–7 días</li>
+        </ul>
+        <div class="srv-full-price">
+          <span class="precio">Desde $80.000 CLP</span>
+          <a href="cotizar.html">Cotizar este servicio →</a>
+        </div>
+      </div>
+    </div>
+    <div class="srv-full-card reveal">
+      <div class="srv-full-icon">🏢</div>
+      <div class="srv-full-body">
+        <h3>Sitio Web Multipágina</h3>
+        <p>Presencia web completa con todas las secciones que tu negocio necesita: inicio, servicios, portafolio, blog y contacto.</p>
+        <ul class="srv-features">
+          <li>5–10 páginas personalizadas</li>
+          <li>Blog integrado (CMS)</li>
+          <li>Formulario de contacto avanzado</li>
+          <li>Google Analytics integrado</li>
+          <li>Entrega en 10–15 días</li>
+        </ul>
+        <div class="srv-full-price">
+          <span class="precio">Desde $180.000 CLP</span>
+          <a href="cotizar.html">Cotizar este servicio →</a>
+        </div>
+      </div>
+    </div>
+    <div class="srv-full-card reveal">
+      <div class="srv-full-icon">🛒</div>
+      <div class="srv-full-body">
+        <h3>Tienda Online (E-commerce)</h3>
+        <p>Vende tus productos 24/7 con una tienda completa: carrito, pagos en línea, gestión de stock y panel de administración fácil de usar.</p>
+        <ul class="srv-features">
+          <li>Catálogo ilimitado de productos</li>
+          <li>Pasarela de pago (WebPay, Flow, MercadoPago)</li>
+          <li>Panel de pedidos y stock</li>
+          <li>Integración con WhatsApp</li>
+          <li>Entrega en 15–20 días</li>
+        </ul>
+        <div class="srv-full-price">
+          <span class="precio">Desde $350.000 CLP</span>
+          <a href="cotizar.html">Cotizar este servicio →</a>
+        </div>
+      </div>
+    </div>
+    <div class="srv-full-card reveal">
+      <div class="srv-full-icon">🎨</div>
+      <div class="srv-full-body">
+        <h3>Rediseño Web</h3>
+        <p>¿Tu web se ve anticuada? La modernice con diseño actual, mejor velocidad y experiencia de usuario que retiene visitantes.</p>
+        <ul class="srv-features">
+          <li>Análisis de tu sitio actual</li>
+          <li>Nuevo diseño visual moderno</li>
+          <li>Migración de contenidos</li>
+          <li>Mejora de velocidad (PageSpeed)</li>
+          <li>Entrega en 7–12 días</li>
+        </ul>
+        <div class="srv-full-price">
+          <span class="precio">Desde $120.000 CLP</span>
+          <a href="cotizar.html">Cotizar este servicio →</a>
+        </div>
+      </div>
+    </div>
+    <div class="srv-full-card reveal">
+      <div class="srv-full-icon">⚡</div>
+      <div class="srv-full-body">
+        <h3>SEO & Optimización</h3>
+        <p>Aparece en los primeros resultados de Google. Optimizo velocidad, estructura y contenido para que te encuentren orgánicamente.</p>
+        <ul class="srv-features">
+          <li>Auditoría SEO completa</li>
+          <li>Optimización de velocidad</li>
+          <li>Metaetiquetas y estructura</li>
+          <li>Google Search Console</li>
+          <li>Informe mensual</li>
+        </ul>
+        <div class="srv-full-price">
+          <span class="precio">Desde $60.000 CLP</span>
+          <a href="cotizar.html">Cotizar este servicio →</a>
+        </div>
+      </div>
+    </div>
+    <div class="srv-full-card reveal">
+      <div class="srv-full-icon">🔧</div>
+      <div class="srv-full-body">
+        <h3>Mantención Mensual</h3>
+        <p>Tu web siempre actualizada, segura y funcionando. Me encargo de todo para que tú te concentres en tu negocio.</p>
+        <ul class="srv-features">
+          <li>Actualizaciones de seguridad</li>
+          <li>Backups semanales</li>
+          <li>Soporte prioritario</li>
+          <li>Cambios menores incluidos</li>
+          <li>Reporte mensual</li>
+        </ul>
+        <div class="srv-full-price">
+          <span class="precio">Desde $30.000 CLP/mes</span>
+          <a href="cotizar.html">Cotizar este servicio →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="paquetes">
+  <div style="text-align:center;">
+    <div class="section-tag" style="justify-content:center;display:inline-flex;">Paquetes</div>
+    <h2 class="titulo reveal">Elige el plan<br><span>que más te conviene</span></h2>
+  </div>
+  <div class="pkg-grid">
+    <div class="pkg-card reveal">
+      <p class="pkg-name">Básico</p>
+      <p class="pkg-price">$80.000 <small>CLP</small></p>
+      <p class="pkg-desc">Ideal para emprendedores que recién están comenzando su presencia online.</p>
+      <ul class="pkg-features">
+        <li>Landing Page profesional</li>
+        <li>Diseño responsive</li>
+        <li>Botón WhatsApp</li>
+        <li>Formulario de contacto</li>
+        <li>SEO básico</li>
+        <li>Entrega en 5 días</li>
+      </ul>
+      <a href="cotizar.html" class="btn btn-outline" style="width:100%;justify-content:center;">Elegir plan</a>
+    </div>
+    <div class="pkg-card featured reveal">
+      <span class="pkg-popular">⭐ Popular</span>
+      <p class="pkg-name">Pro</p>
+      <p class="pkg-price">$220.000 <small>CLP</small></p>
+      <p class="pkg-desc">Para negocios que quieren una presencia web completa y profesional.</p>
+      <ul class="pkg-features">
+        <li>Sitio hasta 6 páginas</li>
+        <li>Diseño premium personalizado</li>
+        <li>Blog con CMS</li>
+        <li>SEO optimizado</li>
+        <li>Google Analytics</li>
+        <li>1 mes de soporte gratis</li>
+        <li>Entrega en 12 días</li>
+      </ul>
+      <a href="cotizar.html" class="btn btn-cyan" style="width:100%;justify-content:center;">Elegir plan</a>
+    </div>
+    <div class="pkg-card reveal">
+      <p class="pkg-name">E-commerce</p>
+      <p class="pkg-price">$380.000 <small>CLP</small></p>
+      <p class="pkg-desc">Tienda online completa para vender tus productos las 24 horas.</p>
+      <ul class="pkg-features">
+        <li>Tienda online completa</li>
+        <li>Pasarela de pago integrada</li>
+        <li>Gestión de productos/stock</li>
+        <li>Panel de administración</li>
+        <li>SEO avanzado</li>
+        <li>3 meses de soporte</li>
+        <li>Entrega en 18 días</li>
+      </ul>
+      <a href="cotizar.html" class="btn btn-outline" style="width:100%;justify-content:center;">Elegir plan</a>
+    </div>
+  </div>
+
+  <div style="margin-top:5rem;">
+    <div style="text-align:center; margin-bottom:2rem;">
+      <div class="section-tag" style="justify-content:center;display:inline-flex;">FAQ</div>
+      <h2 class="titulo reveal">Preguntas <span>frecuentes</span></h2>
+    </div>
+    <div class="faq-list reveal" style="max-width:720px;margin:0 auto;">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">¿Cuánto tiempo demora mi web? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Depende del proyecto. Una landing page puede estar lista en 5 días, un sitio multipágina en 10–15 días y una tienda online en 15–20 días hábiles.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">¿Qué necesito para empezar? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Solo necesitas tener claro qué quieres mostrar en tu web y tener las fotos o logo de tu negocio. Yo me encargo del resto.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">¿Puedo editar la web yo mismo? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Sí. Si usamos WordPress o un CMS podrás editar textos e imágenes fácilmente sin saber programar.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">¿El precio incluye el hosting y dominio? <span class="faq-icon">+</span></div>
+        <div class="faq-a">El dominio y hosting tienen un costo anual aparte (aprox. $30.000–50.000 CLP/año). Te ayudo a contratarlos si lo necesitas.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">¿Haces webpay o pago en línea? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Sí, integro WebPay, Flow y MercadoPago en tiendas online. Cada plataforma tiene sus propios requisitos de contratación que te explico.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <h2>¿Cuál servicio <span>necesitas tú?</span></h2>
+    <p>Cuéntame tu proyecto y te preparo un presupuesto sin compromiso en menos de 24 horas.</p>
+    <div class="cta-actions">
+      <a href="cotizar.html" class="cta-btn-primary">Cotizar ahora <span class="btn-arrow">→</span></a>
+      <a href="contacto.html" class="cta-btn-secondary"><span class="btn-icon">💬</span> Consultar</a>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="footer-logo">Mille<span>svc</span></a>
+      <p class="footer-desc">Diseño y desarrollo de páginas web profesionales para negocios que quieren crecer online.</p>
+    </div>
+    <div class="footer-col"><h4>Páginas</h4><ul><li><a href="index.html">Inicio</a></li><li><a href="servicios.html">Servicios</a></li><li><a href="proyectos.html">Proyectos</a></li><li><a href="sobremi.html">Sobre mí</a></li></ul></div>
+    <div class="footer-col"><h4>Servicios</h4><ul><li><a href="servicios.html">Landing Page</a></li><li><a href="servicios.html">Sitio Multipágina</a></li><li><a href="servicios.html">Tienda Online</a></li><li><a href="servicios.html">SEO</a></li></ul></div>
+    <div class="footer-col"><h4>Contacto</h4><ul><li><a href="cotizar.html">Cotizar</a></li><li><a href="contacto.html">Contacto</a></li><li><a href="https://wa.me/56912345678" target="_blank">WhatsApp</a></li><li><a href="mailto:hola@millesvc.studio">Email</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Millesvc Studio · Hecho con ❤️ en Chile</span><span>Diseño & Desarrollo por <a href="#">Millesvc</a></span></div>
+</footer>
+
+<a href="https://wa.me/56912345678?text=Hola!%20Quiero%20información%20sobre%20una%20página%20web%20🚀" target="_blank" class="wsp-btn">
+  <div class="wsp-tooltip">¡Escríbeme!</div>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<script src="main.js"></script>
+<script>
+function toggleFaq(item) {
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>

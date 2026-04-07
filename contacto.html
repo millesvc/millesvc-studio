@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contacto | Millesvc Studio</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    #contacto-main { padding: 5rem 5%; background: var(--blanco); }
+    .contacto-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 5rem; align-items: start; }
+
+    .contacto-info .section-tag { margin-bottom: 1rem; }
+    .contacto-info h2 { font-size: clamp(1.8rem,3.5vw,2.6rem); font-weight: 900; letter-spacing: -.03em; line-height: 1.1; margin-bottom: 1rem; }
+    .contacto-info h2 span { background: linear-gradient(135deg,var(--cyan),var(--turquesa)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .contacto-info > p { color: var(--gris); line-height: 1.7; margin-bottom: 2.5rem; }
+
+    .contact-items { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem; }
+    .contact-item {
+      display: flex; align-items: center; gap: 1.2rem;
+      padding: 1.1rem 1.4rem; background: var(--blanco2);
+      border: 1.5px solid rgba(0,200,248,.15); border-radius: var(--radius);
+      color: var(--oscuro); text-decoration: none; transition: all .25s; cursor: none;
+    }
+    .contact-item:hover { border-color: rgba(0,200,248,.45); transform: translateX(5px); box-shadow: 0 6px 20px rgba(0,180,224,.12); background: rgba(0,200,248,.04); }
+    .ci-icon {
+      width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    }
+    .ci-icon.wsp { background: linear-gradient(135deg,#25D366,#128C7E); }
+    .ci-icon.mail { background: linear-gradient(135deg,var(--cyan),var(--azul)); }
+    .ci-icon.ig { background: linear-gradient(135deg,#fd5949,#d6249f,#285AEB); }
+    .ci-text strong { display: block; font-weight: 800; font-size: .95rem; }
+    .ci-text span { font-size: .82rem; color: var(--gris); }
+
+    .disponibilidad {
+      background: linear-gradient(135deg,rgba(0,200,248,.08),rgba(0,201,177,.06));
+      border: 1.5px solid rgba(0,200,248,.2); border-radius: var(--radius);
+      padding: 1.2rem 1.5rem; display: flex; align-items: center; gap: 1rem;
+    }
+    .disp-dot { width: 10px; height: 10px; border-radius: 50%; background: #22c55e; flex-shrink: 0; animation: pulse2 2s infinite; box-shadow: 0 0 0 3px rgba(34,197,94,.2); }
+    @keyframes pulse2 { 0%,100%{box-shadow:0 0 0 3px rgba(34,197,94,.2)} 50%{box-shadow:0 0 0 6px rgba(34,197,94,.1)} }
+    .disp-text strong { display: block; font-size: .9rem; font-weight: 800; color: #16a34a; }
+    .disp-text span { font-size: .8rem; color: var(--gris); }
+
+    /* FORM */
+    .contacto-form-box {
+      background: var(--blanco2); border: 1.5px solid rgba(0,200,248,.18);
+      border-radius: var(--radius-lg); padding: 2.5rem;
+      box-shadow: 0 12px 40px rgba(0,150,200,.08);
+      position: relative; overflow: hidden;
+    }
+    .contacto-form-box::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:3px;
+      background: linear-gradient(90deg,var(--cyan),var(--neon),var(--turquesa));
+    }
+    .contacto-form-box h3 { font-size: 1.2rem; font-weight: 900; margin-bottom: 1.8rem; letter-spacing: -.02em; }
+    .btn-form {
+      width: 100%; padding: 1rem;
+      background: linear-gradient(135deg,var(--cyan),var(--neon));
+      color: var(--oscuro); border: none; border-radius: 50px;
+      font-family: var(--font-display); font-weight: 800; font-size: 1rem;
+      cursor: none; transition: all .25s; box-shadow: 0 6px 20px rgba(0,200,248,.35);
+    }
+    .btn-form:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,200,248,.5); }
+
+    /* MAPA FAKE */
+    #ubicacion { padding: 5rem 5%; background: var(--blanco2); }
+    .mapa-box {
+      margin-top: 3rem; border-radius: var(--radius-lg); overflow: hidden;
+      border: 1.5px solid rgba(0,200,248,.2);
+      background: linear-gradient(135deg,var(--blanco3),var(--celeste1));
+      height: 320px; display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 1rem; position: relative;
+    }
+    .mapa-box::before { content:'📍'; font-size: 3rem; }
+    .mapa-box p { font-weight: 800; font-size: 1.1rem; color: var(--cyan2); }
+    .mapa-box span { font-size: .9rem; color: var(--gris); }
+
+    @media (max-width: 900px) { .contacto-grid { grid-template-columns: 1fr; gap: 3rem; } }
+  </style>
+</head>
+<body>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<nav id="navbar">
+  <a href="index.html" class="logo">Mille<em>svc</em></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="servicios.html">Servicios</a></li>
+    <li><a href="proyectos.html">Proyectos</a></li>
+    <li><a href="sobremi.html">Sobre mí</a></li>
+    <li><a href="cotizar.html">Cotizar</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+  </ul>
+  <a href="cotizar.html" class="nav-cta">Cotizar →</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="section-tag">Contacto</div>
+    <h1 class="page-hero h1">Hablemos de<br><span>tu proyecto</span></h1>
+    <p>Cuéntame lo que necesitas. Respondo siempre en menos de 24 horas, normalmente mucho antes.</p>
+  </div>
+</section>
+
+<section id="contacto-main">
+  <div class="contacto-grid">
+
+    <div class="reveal-left">
+      <div class="section-tag">Canales de contacto</div>
+      <h2>Elige cómo <span>comunicarte</span></h2>
+      <p>Puedes escribirme por WhatsApp, correo o Instagram. Siempre estoy disponible para responder tus dudas.</p>
+
+      <div class="contact-items">
+        <a href="https://wa.me/56912345678?text=Hola!%20Quiero%20información%20sobre%20mis%20servicios%20web" target="_blank" class="contact-item">
+          <div class="ci-icon wsp">📱</div>
+          <div class="ci-text">
+            <strong>WhatsApp</strong>
+            <span>+56 9 9064 3785 — Respuesta rápida</span>
+          </div>
+        </a>
+        <a href="mailto:milles.toledo.dev@gmail.com" class="contact-item">
+          <div class="ci-icon mail">✉️</div>
+          <div class="ci-text">
+            <strong>Email</strong>
+            <span>milles.toledo.dev@gmail.com</span>
+          </div>
+        </a>
+        <a href="https://instagram.com/millesvc.studio" target="_blank" class="contact-item">
+          <div class="ci-icon ig">📸</div>
+          <div class="ci-text">
+            <strong>Instagram</strong>
+            <span>@millesvc.studio</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="disponibilidad">
+        <div class="disp-dot"></div>
+        <div class="disp-text">
+          <strong>Disponible para nuevos proyectos</strong>
+          <span>Tiempo de respuesta promedio: menos de 4 horas</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal-right">
+      <div class="contacto-form-box">
+        <h3>📝 Envíame un mensaje</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Tu nombre</label>
+            <input type="text" id="ctcNombre" placeholder="Juan Pérez"/>
+          </div>
+          <div class="form-group">
+            <label>Teléfono / WhatsApp</label>
+            <input type="tel" id="ctcTel" placeholder="+56 9 ..."/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" id="ctcEmail" placeholder="tu@correo.cl"/>
+        </div>
+        <div class="form-group">
+          <label>¿Qué necesitas?</label>
+          <select id="ctcServicio">
+            <option value="">Seleccionar servicio...</option>
+            <option>Landing Page</option>
+            <option>Sitio Web Multipágina</option>
+            <option>Tienda Online</option>
+            <option>Actualización / Rediseño</option>
+            <option>SEO & Optimización</option>
+            <option>Mantención Web</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Cuéntame más</label>
+          <textarea id="ctcMensaje" placeholder="Describe tu negocio, qué necesitas y cualquier detalle relevante..."></textarea>
+        </div>
+        <button class="btn-form" onclick="enviarContacto()">Enviar por WhatsApp →</button>
+        <p style="text-align:center;font-size:.78rem;color:var(--gris2);margin-top:.8rem;">También puedes escribirme directamente al <a href="https://wa.me/56912345678" style="color:var(--cyan2);font-weight:700;">+56 9 1234 5678</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ubicacion">
+  <div style="text-align:center; margin-bottom:2rem;">
+    <div class="section-tag" style="justify-content:center;display:inline-flex;">Ubicación</div>
+    <h2 class="titulo reveal">Trabajo 100% <span>remoto desde Chile</span></h2>
+    <p class="subtitulo reveal" style="margin:1rem auto 0;text-align:center;">Atiendo clientes en todo el país. Sin importar dónde estés, tu web se entrega a tiempo.</p>
+  </div>
+  <div class="mapa-box reveal">
+    <p>Chile — Disponible en todo el país</p>
+    <span>Trabajo 100% remoto · Llamadas disponibles</span>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <h2>¿Prefieres una <span>cotización directa?</span></h2>
+    <p>Usa nuestro formulario y recibe tu presupuesto en menos de 24 horas.</p>
+    <div class="cta-actions">
+      <a href="cotizar.html" class="cta-btn-primary">Cotizar mi proyecto <span class="btn-arrow">→</span></a>
+      <a href="https://wa.me/56912345678" class="cta-btn-secondary"><span class="btn-icon">📱</span> WhatsApp</a>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div><a href="index.html" class="footer-logo">Mille<span>svc</span></a><p class="footer-desc">Diseño y desarrollo de páginas web profesionales para negocios que quieren crecer online.</p></div>
+    <div class="footer-col"><h4>Páginas</h4><ul><li><a href="index.html">Inicio</a></li><li><a href="servicios.html">Servicios</a></li><li><a href="proyectos.html">Proyectos</a></li><li><a href="sobremi.html">Sobre mí</a></li></ul></div>
+    <div class="footer-col"><h4>Servicios</h4><ul><li><a href="servicios.html">Landing Page</a></li><li><a href="servicios.html">Sitio Multipágina</a></li><li><a href="servicios.html">Tienda Online</a></li><li><a href="servicios.html">SEO</a></li></ul></div>
+    <div class="footer-col"><h4>Contacto</h4><ul><li><a href="cotizar.html">Cotizar</a></li><li><a href="contacto.html">Contacto</a></li><li><a href="https://wa.me/56990643785" target="_blank">WhatsApp</a></li><li><a href="mailto:milles.toledo.dev@gmail.com">Email</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Millesvc Studio · Hecho con ❤️ en Chile</span><span>Diseño & Desarrollo por <a href="#">Millesvc</a></span></div>
+</footer>
+<a href="https://wa.me/56990643785?text=Hola!" target="_blank" class="wsp-btn"><div class="wsp-tooltip">¡Escríbeme!</div><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<script src="main.js"></script>
+</body>
+</html>

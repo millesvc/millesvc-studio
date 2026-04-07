@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Proyectos | Millesvc Studio</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    #proyectos-main { padding: 5rem 5%; background: var(--blanco); }
+
+    /* ── FILTROS ── */
+    .filter-bar { display: flex; gap: .8rem; flex-wrap: wrap; margin: 2.5rem 0 3rem; }
+    .filter-btn {
+      padding: .5rem 1.3rem; border-radius: 50px;
+      border: 1.5px solid rgba(0,200,248,.25);
+      background: transparent; color: var(--gris);
+      font-family: var(--font-display); font-size: .88rem; font-weight: 700;
+      transition: all .25s; position: relative; overflow: hidden;
+    }
+    .filter-btn::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--cyan), var(--neon));
+      opacity: 0; transition: opacity .25s; z-index: 0;
+    }
+    .filter-btn span { position: relative; z-index: 1; }
+    .filter-btn:hover { border-color: var(--cyan); color: var(--oscuro); box-shadow: 0 4px 16px rgba(0,200,248,.25); }
+    .filter-btn:hover::before { opacity: 1; }
+    .filter-btn.active { border-color: transparent; color: var(--oscuro); box-shadow: 0 4px 18px rgba(0,200,248,.4); }
+    .filter-btn.active::before { opacity: 1; }
+
+    /* ── GRID ── */
+    .proyectos-masonry { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .proy-card {
+      background: var(--blanco2); border: 1.5px solid rgba(0,200,248,.12);
+      border-radius: var(--radius-lg); overflow: hidden;
+      transition: transform .35s, box-shadow .35s, border-color .35s, opacity .3s;
+      position: relative;
+    }
+    .proy-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,150,200,.18); border-color: rgba(0,200,248,.4); }
+    .proy-card.tall { grid-row: span 2; }
+    .proy-card.oculta { opacity: 0 !important; transform: scale(.94) translateY(12px) !important; pointer-events: none; }
+
+    .proy-img { width:100%; height:200px; display:flex; align-items:center; justify-content:center; font-size:3.5rem; position:relative; overflow:hidden; }
+    .proy-card.tall .proy-img { height:280px; }
+    .proy-img-overlay { position:absolute; inset:0; background:linear-gradient(to bottom,transparent 40%,rgba(6,32,48,.85) 100%); }
+    .proy-badge { position:absolute; top:1rem; left:1rem; }
+    .proy-body { padding:1.5rem; }
+    .proy-tag { font-family:var(--font-mono); font-size:.72rem; color:var(--cyan2); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.4rem; display:block; }
+    .proy-body h3 { font-size:1.1rem; font-weight:800; margin-bottom:.5rem; }
+    .proy-body p { font-size:.87rem; color:var(--gris); line-height:1.6; }
+    .proy-techs { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.9rem; }
+    .proy-tech { font-size:.72rem; padding:.2rem .6rem; border-radius:50px; background:rgba(0,200,248,.08); color:var(--cyan2); border:1px solid rgba(0,200,248,.2); font-weight:600; }
+    .proy-link {
+      display:inline-flex; align-items:center; gap:.4rem; margin-top:1rem;
+      font-size:.85rem; font-weight:800; color:var(--oscuro);
+      background: linear-gradient(135deg, var(--cyan), var(--neon));
+      padding:.45rem 1.1rem; border-radius:50px; text-decoration:none;
+      transition:all .25s; box-shadow:0 3px 12px rgba(0,200,248,.3);
+    }
+    .proy-link:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,200,248,.5); }
+
+    /* RESULTADOS */
+    #resultados { padding:5rem 5%; background:var(--blanco2); }
+    .result-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; margin-top:3rem; }
+    .result-card { background:var(--blanco); border:1.5px solid rgba(0,200,248,.12); border-radius:var(--radius); padding:2rem; text-align:center; transition:all .3s; }
+    .result-card:hover { transform:translateY(-4px); box-shadow:var(--sombra-cyan); }
+    .result-num { font-size:2.5rem; font-weight:900; letter-spacing:-.04em; background:linear-gradient(135deg,var(--cyan),var(--turquesa)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .result-label { font-size:.82rem; color:var(--gris); margin-top:.3rem; line-height:1.4; }
+
+    @media (max-width:900px) { .proyectos-masonry{grid-template-columns:1fr 1fr} .result-grid{grid-template-columns:1fr 1fr} }
+    @media (max-width:600px) { .proyectos-masonry{grid-template-columns:1fr} .proy-card.tall{grid-row:auto} .result-grid{grid-template-columns:1fr 1fr} }
+  </style>
+</head>
+<body>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav id="navbar">
+  <a href="index.html" class="logo">Mille<em>svc</em></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="servicios.html">Servicios</a></li>
+    <li><a href="proyectos.html">Proyectos</a></li>
+    <li><a href="sobremi.html">Sobre mí</a></li>
+    <li><a href="cotizar.html">Cotizar</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+  </ul>
+  <a href="cotizar.html" class="nav-cta">Cotizar →</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="section-tag">Portfolio</div>
+    <h1 style="font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.05;color:var(--oscuro);">
+      Proyectos que <span style="background:linear-gradient(135deg,var(--cyan),var(--neon),var(--turquesa));-webkit-background-clip:text;background-clip:text;color:transparent;">hablan por sí solos</span>
+    </h1>
+    <p style="color:var(--gris);font-size:1.1rem;line-height:1.7;max-width:520px;margin-top:1.2rem;">Trabajos reales para emprendedores, PYMES y empresas que quisieron destacar en internet.</p>
+  </div>
+</section>
+
+<section id="proyectos-main">
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="todos"><span>Todos</span></button>
+    <button class="filter-btn" data-filter="landing-page"><span>Landing Page</span></button>
+    <button class="filter-btn" data-filter="e-commerce"><span>E-commerce</span></button>
+    <button class="filter-btn" data-filter="corporativo"><span>Corporativo</span></button>
+    <button class="filter-btn" data-filter="rediseno"><span>Rediseño</span></button>
+  </div>
+
+  <div class="proyectos-masonry" id="proyGrid">
+
+    <div class="proy-card tall" data-cat="e-commerce">
+      <div class="proy-img" style="background:linear-gradient(135deg,#e0f5ff,#b8eeff,#5dd8f8);">🍕<div class="proy-img-overlay"></div><div class="proy-badge"><span class="badge badge-cyan">E-commerce</span></div></div>
+      <div class="proy-body">
+        <span class="proy-tag">Gastronomía</span>
+        <h3>Pizzería Don Carlo</h3>
+        <p>Tienda online con pedidos en línea, integración con WhatsApp, carta digital y gestión de pedidos en tiempo real.</p>
+        <div class="proy-techs"><span class="proy-tech">WordPress</span><span class="proy-tech">WooCommerce</span><span class="proy-tech">WhatsApp API</span></div>
+        <a href="https://wa.me/56912345678?text=Hola!%20Vi%20la%20Pizzería%20Don%20Carlo%20en%20tu%20portfolio%20y%20quiero%20algo%20similar%20para%20mi%20negocio%20🍕" target="_blank" class="proy-link">Quiero algo así →</a>
+      </div>
+    </div>
+
+    <div class="proy-card" data-cat="corporativo">
+      <div class="proy-img" style="background:linear-gradient(135deg,#e0fff8,#b8fff0,#00c9b1);">🏥<div class="proy-img-overlay"></div><div class="proy-badge"><span class="badge badge-turq">Corporativo</span></div></div>
+      <div class="proy-body">
+        <span class="proy-tag">Salud</span>
+        <h3>Clínica VidaSana</h3>
+        <p>Sitio corporativo con reserva de horas online, ficha médica y portal para pacientes.</p>
+        <div class="proy-techs"><span class="proy-tech">HTML5</span><span class="proy-tech">PHP</span><span class="proy-tech">MySQL</span></div>
+        <a href="https://wa.me/56912345678?text=Hola!%20Vi%20el%20proyecto%20Clínica%20VidaSana%20en%20tu%20portfolio%20y%20quiero%20un%20sitio%20corporativo%20similar%20🏥" target="_blank" class="proy-link">Quiero algo así →</a>
+      </div>
+    </div>
+
+    <div class="proy-card" data-cat="landing-page">
+      <div class="proy-img" style="background:linear-gradient(135deg,#e0eeff,#b8d0ff,#0077cc);">⚖️<div class="proy-img-overlay"></div><div class="proy-badge"><span class="badge badge-azul">Landing Page</span></div></div>
+      <div class="proy-body">
+        <span class="proy-tag">Legal</span>
+        <h3>Estudio Jurídico Morales</h3>
+        <p>Landing page elegante con formulario de consultas y blog legal actualizable.</p>
+        <div class="proy-techs"><span class="proy-tech">HTML5</span><span class="proy-tech">CSS3</span><span class="proy-tech">JS</span></div>
+        <a href="https://wa.me/56912345678?text=Hola!%20Vi%20el%20Estudio%20Jurídico%20en%20tu%20portfolio%20y%20quiero%20una%20Landing%20Page%20similar%20⚖️" target="_blank" class="proy-link">Quiero algo así →</a>
+      </div>
+    </div>
+
+    <div class="proy-card" data-cat="e-commerce">
+      <div class="proy-img" style="background:linear-gradient(135deg,#eefff5,#c0ffe0,#00c9b1);">🌿<div class="proy-img-overlay"></div><div class="proy-badge"><span class="badge badge-turq">E-commerce</span></div></div>
+      <div class="proy-body">
+        <span class="proy-tag">Sustentable</span>
+        <h3>EcoTienda Verde</h3>
+        <p>Catálogo online de productos ecológicos con pasarela de pago y envío integrado.</p>
+        <div class="proy-techs"><span class="proy-tech">WooCommerce</span><span class="proy-tech">Flow</span></div>
+        <a href="https://wa.me/56912345678?text=Hola!%20Vi%20la%20EcoTienda%20Verde%20en%20tu%20portfolio%20y%20quiero%20una%20tienda%20online%20similar%20🌿" target="_blank" class="proy-link">Quiero algo así →</a>
+      </div>
+    </div>
+
+    <div class="proy-card tall" data-cat="landing-page">
+      <div class="proy-img" style="background:linear-gradient(135deg,#f0e0ff,#d4b8ff,#7c3aed);">🎵<div class="proy-img-overlay"></div><div class="proy-badge"><span class="badge badge-azul">Portfolio</span></div></div>
+      <div class="proy-body">
+        <span class="proy-tag">Arte & Música</span>
+        <h3>Productor Musical DXT</h3>
+        <p>Portfolio multimedia con reproductor integrado, venta de beats y sección de contacto para booking.</p>
+        <div class="proy-techs"><span class="proy-tech">HTML5</span><span class="proy-tech">JS</span><span class="proy-tech">Audio API</span></div>
+        <a href="https://wa.me/56912345678?text=Hola!%20Vi%20el%20Productor%20Musical%20DXT%20en%20tu%20portfolio%20y%20quiero%20un%20sitio%20similar%20🎵" target="_blank" class="proy-link">Quiero algo así →</a>
+      </div>
+    </div>
+
+    <div class="proy-card" data-cat="rediseno">
+      <div class="proy-img" style="background:linear-gradient(135deg,#fff0e0,#ffd4b8,#f97316);">🏗️<div class="proy-img-overlay"></div><div class="proy-badge"><span class="badge badge-cyan">Rediseño</span></div></div>
+      <div class="proy-body">
+        <span class="proy-tag">Construcción</span>
+        <h3>Constructora Andina</h3>
+        <p>Rediseño completo de sitio corporativo con galería de proyectos y cotizador online.</p>
+        <div class="proy-techs"><span class="proy-tech">WordPress</span><span class="proy-tech">Elementor</span></div>
+        <a href="https://wa.me/56912345678?text=Hola!%20Vi%20la%20Constructora%20Andina%20en%20tu%20portfolio%20y%20quiero%20un%20rediseño%20similar%20🏗️" target="_blank" class="proy-link">Quiero algo así →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="resultados">
+  <div style="text-align:center;">
+    <div class="section-tag" style="justify-content:center;display:inline-flex;">Resultados</div>
+    <h2 class="titulo reveal">Números que <span>demuestran resultados</span></h2>
+  </div>
+  <div class="result-grid">
+    <div class="result-card reveal"><div class="result-num">+40</div><div class="result-label">Proyectos entregados con éxito</div></div>
+    <div class="result-card reveal"><div class="result-num">100%</div><div class="result-label">Clientes satisfechos con el resultado</div></div>
+    <div class="result-card reveal"><div class="result-num">+3</div><div class="result-label">Años creando webs profesionales</div></div>
+    <div class="result-card reveal"><div class="result-num">5★</div><div class="result-label">Valoración promedio de clientes</div></div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <h2>¿Tu proyecto <span>podría ser el próximo?</span></h2>
+    <p>Cuéntame tu idea y en menos de 24 horas tienes tu cotización lista.</p>
+    <div class="cta-actions">
+      <a href="cotizar.html" class="cta-btn-primary">Cotizar mi web <span class="btn-arrow">→</span></a>
+      <a href="contacto.html" class="cta-btn-secondary"><span class="btn-icon">📩</span> Contactar</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div><a href="index.html" class="footer-logo">Mille<span>svc</span></a><p class="footer-desc">Diseño y desarrollo de páginas web profesionales para negocios que quieren crecer online.</p></div>
+    <div class="footer-col"><h4>Páginas</h4><ul><li><a href="index.html">Inicio</a></li><li><a href="servicios.html">Servicios</a></li><li><a href="proyectos.html">Proyectos</a></li><li><a href="sobremi.html">Sobre mí</a></li></ul></div>
+    <div class="footer-col"><h4>Servicios</h4><ul><li><a href="servicios.html">Landing Page</a></li><li><a href="servicios.html">Sitio Multipágina</a></li><li><a href="servicios.html">Tienda Online</a></li><li><a href="servicios.html">SEO</a></li></ul></div>
+    <div class="footer-col"><h4>Contacto</h4><ul><li><a href="cotizar.html">Cotizar</a></li><li><a href="contacto.html">Contacto</a></li><li><a href="https://wa.me/56912345678" target="_blank">WhatsApp</a></li><li><a href="mailto:hola@millesvc.cl">Email</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Millesvc Studio · Hecho con ❤️ en Chile</span><span>Diseño & Desarrollo por <a href="#">Millesvc</a></span></div>
+</footer>
+
+<a href="https://wa.me/56912345678?text=Hola!%20Quiero%20información%20sobre%20una%20página%20web%20🚀" target="_blank" class="wsp-btn">
+  <div class="wsp-tooltip">¡Escríbeme!</div>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="main.js"></script>
+<script>
+// ── FILTRO DE PROYECTOS ──
+(function () {
+  const btns  = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('#proyGrid .proy-card');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', function () {
+
+      // Activar botón clickeado
+      btns.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+
+      const filtro = this.dataset.filter;
+
+      cards.forEach(card => {
+        const coincide = filtro === 'todos' || card.dataset.cat === filtro;
+
+        if (coincide) {
+          card.style.display = '';
+          // forzar repaint antes de quitar clase
+          requestAnimationFrame(() => {
+            card.classList.remove('oculta');
+          });
+        } else {
+          card.classList.add('oculta');
+          // ocultar del flujo después de la transición
+          setTimeout(() => {
+            if (card.classList.contains('oculta')) card.style.display = 'none';
+          }, 320);
+        }
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
