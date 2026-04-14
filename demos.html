@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Demos | MillesvcStudio</title>
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav id="navbar">
+  <a href="index.html" class="logo">Millesvc<em>Studio</em></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="servicios.html">Servicios</a></li>
+    <li><a href="proyectos.html">Proyectos</a></li>
+    <li><a href="demos.html" class="active">Demos</a></li>
+    <li><a href="sobremi.html">Sobre mí</a></li>
+    <li><a href="cotizar.html">Cotizar</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+  </ul>
+  <a href="cotizar.html" class="nav-cta">Cotizar →</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="section-tag">Demos</div>
+    <h1 class="page-hero h1">Explora demos<br><span>en vivo y multipágina</span></h1>
+    <p>Revisa ejemplos reales de sitios que puedo crear para tu negocio. Cada demo tiene estilo, estructura y enfoque comercial distinto.</p>
+  </div>
+</section>
+
+<section id="demos-page">
+  <div style="text-align:center;">
+    <div class="section-tag" style="justify-content:center;display:inline-flex;">Portafolio demo</div>
+    <h2 class="titulo">Elige el estilo ideal<br><span>para tu marca</span></h2>
+    <p class="subtitulo" style="margin:1rem auto 0;text-align:center;">Ahora las demos viven en su propia página, para que tu web quede realmente multipágina y más profesional.</p>
+  </div>
+
+  <div class="demos-page-grid">
+    <div class="demo-page-card">
+      <div class="demo-page-preview">
+        <iframe src="https://millesvc.github.io/ZapatillasStore/" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+        <div class="demo-page-overlay">
+          <a href="https://millesvc.github.io/ZapatillasStore/" target="_blank" class="demo-page-btn">Ver demo completo →</a>
+        </div>
+      </div>
+      <div class="demo-page-info">
+        <div class="demo-page-badge">🛒 E-Commerce</div>
+        <h3>Tienda de Zapatillas</h3>
+        <p>Tienda online con catálogo, categorías, diseño agresivo y experiencia orientada a vender productos desde el primer scroll.</p>
+        <div class="demo-page-tags">
+          <span>Catálogo</span><span>Carrito</span><span>Responsive</span><span>Conversión</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-page-card">
+      <div class="demo-page-preview">
+        <iframe src="https://millesvc.github.io/DEMO-EMPRESA/" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+        <div class="demo-page-overlay">
+          <a href="https://millesvc.github.io/DEMO-EMPRESA/" target="_blank" class="demo-page-btn">Ver demo completo →</a>
+        </div>
+      </div>
+      <div class="demo-page-info">
+        <div class="demo-page-badge">🏢 Corporativo</div>
+        <h3>Sitio Empresarial</h3>
+        <p>Demo corporativa multipágina para empresas que necesitan presencia profesional, autoridad visual y secciones bien estructuradas.</p>
+        <div class="demo-page-tags">
+          <span>Multipágina</span><span>Servicios</span><span>Equipo</span><span>SEO</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-page-card">
+      <div class="demo-page-preview">
+        <iframe src="https://millesvc.github.io/lumiereStudio/" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+        <div class="demo-page-overlay">
+          <a href="https://millesvc.github.io/lumiereStudio/" target="_blank" class="demo-page-btn">Ver demo completo →</a>
+        </div>
+      </div>
+      <div class="demo-page-info">
+        <div class="demo-page-badge">💅 Beauty</div>
+        <h3>Studio de Uñas</h3>
+        <p>Landing premium para negocios del rubro beauty, con identidad visual elegante, servicios destacados y llamada clara a la reserva.</p>
+        <div class="demo-page-tags">
+          <span>Landing</span><span>Beauty</span><span>Reservas</span><span>Elegante</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:3rem;">
+    <a href="cotizar.html" class="btn btn-cyan">Quiero una web así →</a>
+  </div>
+</section>
+
+
+
+
+
+<script src="main.js"></script>
+</body>
+</html>
