@@ -57,9 +57,10 @@ if (navbar) {
 }
 
 // ── ACTIVE NAV LINK ──
-const currentPage = location.pathname.split('/').pop() || 'index.html';
+const normalizePath = p => p.replace(/\/+$|^$/, '/') === '/' ? '/' : p.replace(/\/+$|^$/, '');
+const currentPath = normalizePath(location.pathname);
 document.querySelectorAll('.nav-links a').forEach(a => {
-  if (a.getAttribute('href') === currentPage) a.classList.add('active');
+  if (normalizePath(a.pathname) === currentPath) a.classList.add('active');
 });
 
 // ── MOBILE MENU ──
@@ -238,7 +239,7 @@ window.enviarCotizacion = function () {
   }
 
   window.setTimeout(() => {
-    window.location.assign('gracias.html');
+    window.location.assign('/gracias/');
   }, 300);
 };
 

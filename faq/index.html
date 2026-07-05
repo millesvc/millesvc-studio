@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18266791992"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18266791992');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- ══ SEO ══ -->
+  <title>FAQ | MillesvcStudio — Desarrollo Web, SEO y Tiendas Online</title>
+  <meta name="description" content="Resuelve tus dudas sobre desarrollo web, tiendas online, hosting, SEO, pagos y soporte con el FAQ de MillesvcStudio."/>
+  <meta name="keywords" content="preguntas frecuentes desarrollo web Chile, cuánto cuesta una página web, hosting dominio Chile, SEO Chile, FAQ agencia web Santiago"/>
+  <link rel="canonical" href="https://millesvcstudio.com/faq/"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="icon" href="/favicon.svg"/>
+
+  <!-- ══ Open Graph ══ -->
+  <meta property="og:type"        content="website"/>
+  <meta property="og:title"       content="Preguntas Frecuentes | MillesvcStudio"/>
+  <meta property="og:description" content="Resolvemos todas tus dudas antes de comenzar tu proyecto web. Cotización, plazos, hosting, SEO y soporte."/>
+  <meta property="og:url"         content="https://millesvcstudio.com/faq/"/>
+  <meta property="og:image"       content="https://millesvcstudio.com/og-default.svg"/>
+  <meta property="og:locale"      content="es_CL"/>
+
+  <!-- ══ Twitter Card ══ -->
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:title"       content="Preguntas Frecuentes | MillesvcStudio"/>
+  <meta name="twitter:description" content="Todo lo que necesitas saber antes de contratar tu página web en Chile."/>
+  <meta name="twitter:image"       content="https://millesvcstudio.com/og-default.svg"/>
+  <meta name="twitter:image:alt" content="Preguntas frecuentes — MillesvcStudio"/>
+
+  <!-- ══ Schema FAQPage ══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cuánto cuesta una página web?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El precio depende del tipo de proyecto. Una landing page profesional parte desde $80.000 CLP, un sitio multipágina desde $150.000 CLP, y una tienda online desde $300.000 CLP. Siempre entregamos una cotización personalizada sin costo ni compromiso."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo funciona el pago?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Trabajamos con un pago dividido: 50% al inicio del proyecto y 50% al entregar el resultado final. No pedimos el 100% por adelantado. Aceptamos transferencia bancaria."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto demora un proyecto?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Una landing page puede estar lista en 5 a 7 días hábiles. Un sitio multipágina entre 2 y 3 semanas. Proyectos más complejos como tiendas online o portales institucionales toman entre 3 y 6 semanas dependiendo de la cantidad de funciones."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Mi sitio aparecerá en Google?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Todos nuestros proyectos incluyen SEO técnico base: meta tags, estructura semántica, velocidad optimizada y Open Graph. También indexamos tu sitio en Google Search Console para que empiece a aparecer lo antes posible."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Necesito contratar hosting?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depende del proyecto. Para sitios estáticos podemos publicar gratis en GitHub Pages o Netlify. Para sitios dinámicos te recomendamos opciones accesibles en Chile y te ayudamos con toda la configuración."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo solicitar cambios después de entregar el proyecto?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Durante el período de soporte incluido puedes pedir ajustes y correcciones menores sin costo adicional. Para cambios más grandes o nuevas funciones, cotizamos de forma transparente."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/styles.css"/>
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       FAQ.HTML — Estilos específicos de página
+       Sigue exactamente la nomenclatura y variables de styles.css
+       y la identidad visual de testimonios.html
+    ════════════════════════════════════════════════════════════ */
+
+    /* ── HERO FAQ ── */
+    #faq-hero {
+      min-height: 58vh;
+      display: flex;
+      align-items: center;
+      padding: 9.5rem 5% 5.5rem;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--blanco2) 0%, var(--blanco3) 55%, var(--celeste1) 100%);
+    }
+    #faq-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 78% 50%, rgba(0,229,255,.18) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 6% 20%,  rgba(0,201,177,.1)  0%, transparent 55%);
+      pointer-events: none;
+    }
+    /* Grid decorativo de fondo idéntico al de testimonios */
+    .faq-hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,200,248,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,200,248,.07) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 75%);
+    }
+    .faq-hero-body {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      gap: 3rem;
+    }
+    .faq-hero-content { max-width: 680px; }
+
+    /* Badge ❓ */
+    .faq-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--cyan2);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      background: rgba(0,200,248,.1);
+      border: 1px solid rgba(0,200,248,.28);
+      padding: .35rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.6rem;
+    }
+    .faq-hero-content h1 {
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 900;
+      letter-spacing: -.04em;
+      line-height: 1.05;
+      color: var(--oscuro);
+      margin-bottom: 1.2rem;
+    }
+    .faq-hero-content h1 span {
+      background: linear-gradient(135deg, var(--cyan), var(--neon), var(--turquesa));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .faq-hero-content p {
+      color: var(--gris);
+      font-size: 1.1rem;
+      line-height: 1.75;
+      max-width: 560px;
+    }
+    /* Ilustración minimalista hero */
+    .faq-hero-illustration {
+      flex-shrink: 0;
+      width: 240px;
+      opacity: .85;
+      animation: faqFloat 4s ease-in-out infinite;
+    }
+    @keyframes faqFloat {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-14px); }
+    }
+
+    /* ── SECCIÓN HIGHLIGHTS (estilo testi-stats) ── */
+    #faq-highlights {
+      padding: 4.5rem 5%;
+      background: var(--blanco);
+      border-bottom: 1px solid rgba(0,200,248,.1);
+    }
+    .faq-highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    /* Tarjeta glass idéntica a .testi-stat-card */
+    .faq-hl-card {
+      position: relative;
+      background: linear-gradient(145deg, rgba(240,250,255,.9), rgba(255,255,255,.95));
+      border: 1.5px solid rgba(0,200,248,.18);
+      border-radius: var(--radius-lg);
+      padding: 2.2rem 1.8rem;
+      text-align: center;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+      transition: all .35s;
+    }
+    .faq-hl-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--cyan), var(--neon), var(--turquesa));
+      opacity: 0;
+      transition: opacity .35s;
+    }
+    .faq-hl-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(0,229,255,.08), transparent 70%);
+      pointer-events: none;
+    }
+    .faq-hl-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--sombra-cyan);
+      border-color: rgba(0,200,248,.4);
+    }
+    .faq-hl-card:hover::before { opacity: 1; }
+    .faq-hl-icon {
+      font-size: 1.9rem;
+      margin-bottom: .9rem;
+      display: block;
+    }
+    .faq-hl-value {
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+      font-weight: 900;
+      letter-spacing: -.03em;
+      background: linear-gradient(135deg, var(--cyan), var(--turquesa));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1.1;
+      margin-bottom: .45rem;
+    }
+    .faq-hl-label {
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--gris);
+      letter-spacing: .03em;
+    }
+    .faq-hl-sub {
+      font-family: var(--font-mono);
+      font-size: .7rem;
+      color: var(--cyan2);
+      margin-top: .35rem;
+      opacity: .8;
+    }
+
+    /* ── SECCIÓN BUSCADOR ── */
+    #faq-search-section {
+      padding: 5.5rem 5% 3.5rem;
+      background: var(--blanco2);
+    }
+    .faq-search-header {
+      text-align: center;
+      margin-bottom: 2.8rem;
+    }
+    /* Buscador visual premium */
+    .faq-search-wrap {
+      position: relative;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    .faq-search-icon {
+      position: absolute;
+      left: 1.3rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.1rem;
+      pointer-events: none;
+      opacity: .55;
+    }
+    .faq-search-input {
+      width: 100%;
+      background: var(--blanco);
+      border: 1.5px solid rgba(0,200,248,.25);
+      border-radius: 50px;
+      padding: 1rem 1.6rem 1rem 3.2rem;
+      font-family: var(--font-display);
+      font-size: .97rem;
+      color: var(--oscuro);
+      outline: none;
+      transition: border-color .25s, box-shadow .25s;
+      box-shadow: 0 4px 20px rgba(0,180,224,.08);
+    }
+    .faq-search-input::placeholder { color: var(--gris2); }
+    .faq-search-input:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 4px rgba(0,200,248,.12), 0 8px 28px rgba(0,180,224,.14);
+    }
+
+    /* ── ACORDEÓN FAQ ── */
+    #faq-accordion {
+      padding: 0 5% 6rem;
+      background: var(--blanco2);
+    }
+    /* Columna de categorías */
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    /* Sidebar de navegación de categorías */
+    .faq-cat-nav {
+      position: sticky;
+      top: 90px;
+      background: var(--blanco);
+      border: 1.5px solid rgba(0,200,248,.15);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem 0;
+      overflow: hidden;
+    }
+    .faq-cat-nav-title {
+      font-family: var(--font-mono);
+      font-size: .65rem;
+      font-weight: 700;
+      color: var(--cyan2);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 0 1.4rem .9rem;
+      border-bottom: 1px solid rgba(0,200,248,.1);
+      margin-bottom: .6rem;
+    }
+    .faq-cat-btn {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      width: 100%;
+      padding: .7rem 1.4rem;
+      background: none;
+      border: none;
+      font-family: var(--font-display);
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--gris);
+      text-align: left;
+      transition: all .2s;
+      position: relative;
+    }
+    .faq-cat-btn::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--cyan), var(--neon));
+      border-radius: 0 2px 2px 0;
+      transform: scaleY(0);
+      transition: transform .25s;
+    }
+    .faq-cat-btn:hover,
+    .faq-cat-btn.active {
+      color: var(--cyan2);
+      background: rgba(0,200,248,.06);
+    }
+    .faq-cat-btn.active::before,
+    .faq-cat-btn:hover::before { transform: scaleY(1); }
+
+    /* Panel derecho: grupos FAQ */
+    .faq-groups { display: flex; flex-direction: column; gap: 2.8rem; }
+
+    .faq-group-header {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      margin-bottom: 1.2rem;
+    }
+    .faq-group-icon {
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(0,200,248,.15), rgba(0,229,255,.08));
+      border: 1.5px solid rgba(0,200,248,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .faq-group-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--oscuro);
+      letter-spacing: -.01em;
+    }
+    .faq-group-count {
+      font-family: var(--font-mono);
+      font-size: .65rem;
+      color: var(--cyan2);
+      background: rgba(0,200,248,.1);
+      border: 1px solid rgba(0,200,248,.2);
+      padding: .18rem .6rem;
+      border-radius: 50px;
+    }
+
+    /* Tarjeta individual del acordeón */
+    .faq-item {
+      background: var(--blanco);
+      border: 1.5px solid rgba(0,200,248,.14);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color .3s, box-shadow .3s;
+      margin-bottom: .85rem;
+    }
+    .faq-item:hover {
+      border-color: rgba(0,200,248,.35);
+      box-shadow: 0 6px 24px rgba(0,180,224,.1);
+    }
+    .faq-item.open {
+      border-color: rgba(0,200,248,.4);
+      box-shadow: 0 8px 28px rgba(0,180,224,.13);
+    }
+    /* Botón pregunta */
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      width: 100%;
+      padding: 1.3rem 1.5rem;
+      background: none;
+      border: none;
+      font-family: var(--font-display);
+      font-size: .97rem;
+      font-weight: 700;
+      color: var(--oscuro);
+      text-align: left;
+      transition: color .2s, background .2s;
+    }
+    .faq-q:hover { color: var(--cyan2); background: rgba(0,200,248,.03); }
+    .faq-item.open .faq-q { color: var(--cyan2); }
+    /* Ícono +/× animado */
+    .faq-q-icon {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(0,200,248,.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--cyan2);
+      transition: transform .35s cubic-bezier(.4,0,.2,1), background .25s, border-color .25s;
+      line-height: 1;
+    }
+    .faq-item.open .faq-q-icon {
+      transform: rotate(45deg);
+      background: linear-gradient(135deg, var(--cyan), var(--neon));
+      border-color: transparent;
+      color: var(--oscuro);
+    }
+    /* Panel respuesta animado */
+    .faq-a-wrap {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .42s cubic-bezier(.4,0,.2,1);
+    }
+    .faq-item.open .faq-a-wrap { max-height: 400px; }
+    .faq-a {
+      padding: 0 1.5rem 1.4rem;
+      font-size: .93rem;
+      color: var(--gris);
+      line-height: 1.8;
+      border-top: 1px solid rgba(0,200,248,.08);
+      padding-top: 1rem;
+    }
+
+    /* ── ¿POR QUÉ ELEGIR MILLESVCSTUDIO? ── */
+    #faq-why {
+      padding: 6rem 5%;
+      background: var(--blanco);
+    }
+    .faq-why-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .faq-why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    /* Reutiliza el estilo de .razon-card */
+    .faq-why-card {
+      background: linear-gradient(145deg, var(--blanco2), var(--blanco));
+      border: 1.5px solid rgba(0,200,248,.14);
+      border-radius: var(--radius);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: all .3s cubic-bezier(.4,0,.2,1);
+    }
+    .faq-why-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--cyan), var(--neon));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s;
+    }
+    .faq-why-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 32px rgba(0,180,224,.13);
+      border-color: rgba(0,200,248,.35);
+    }
+    .faq-why-card:hover::before { transform: scaleX(1); }
+    .faq-why-card-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(0,200,248,.15), rgba(0,229,255,.08));
+      border: 1.5px solid rgba(0,200,248,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+      transition: all .3s;
+    }
+    .faq-why-card:hover .faq-why-card-icon {
+      background: linear-gradient(135deg, var(--cyan), var(--neon));
+      border-color: transparent;
+      box-shadow: 0 6px 18px rgba(0,200,248,.4);
+    }
+    .faq-why-card-check {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-family: var(--font-mono);
+      font-size: .67rem;
+      font-weight: 700;
+      color: var(--cyan2);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: .55rem;
+    }
+    .faq-why-card-check::before {
+      content: '✔';
+      color: var(--turquesa);
+    }
+    .faq-why-card-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--oscuro);
+      margin-bottom: .5rem;
+      letter-spacing: -.01em;
+    }
+    .faq-why-card-desc {
+      font-size: .88rem;
+      color: var(--gris);
+      line-height: 1.7;
+    }
+
+    /* ── CTA FINAL — Mejorado respecto a testimonios ── */
+    #faq-cta {
+      padding: 8rem 5%;
+      text-align: center;
+      background: linear-gradient(135deg, var(--oscuro) 0%, #063650 45%, #04253a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Orbes de glow múltiples */
+    #faq-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 80% at 50% 50%, rgba(0,229,255,.16) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 40% at 8%  20%, rgba(0,201,177,.1)  0%, transparent 55%),
+        radial-gradient(ellipse 25% 35% at 90% 80%, rgba(0,119,204,.08) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    /* Partículas decorativas */
+    .faq-cta-particles {
+      position: absolute; inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .faq-cta-particle {
+      position: absolute;
+      width: 2px; height: 2px;
+      background: var(--neon);
+      border-radius: 50%;
+      opacity: .35;
+      animation: faqParticle var(--dur) ease-in-out infinite var(--delay);
+    }
+    @keyframes faqParticle {
+      0%,100% { transform: translateY(0) scale(1);   opacity: .3; }
+      50%      { transform: translateY(-18px) scale(1.5); opacity: .7; }
+    }
+    .faq-cta-inner { position: relative; z-index: 2; }
+    /* Badge de pulso */
+    .faq-cta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      font-family: var(--font-mono);
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--neon);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      background: rgba(0,229,255,.1);
+      border: 1px solid rgba(0,229,255,.28);
+      padding: .38rem 1.1rem;
+      border-radius: 50px;
+      margin-bottom: 2.2rem;
+      animation: faqBadgePulse 2.5s ease-in-out infinite;
+    }
+    .faq-cta-badge-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--neon);
+      animation: faqDotPulse 1.4s ease-in-out infinite;
+    }
+    @keyframes faqBadgePulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(0,229,255,0); }
+      50%      { box-shadow: 0 0 0 6px rgba(0,229,255,.08); }
+    }
+    @keyframes faqDotPulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: .5; transform: scale(.7); }
+    }
+    #faq-cta h2 {
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -.04em;
+      line-height: 1.05;
+      margin-bottom: 1.4rem;
+    }
+    #faq-cta h2 span {
+      background: linear-gradient(135deg, var(--neon), var(--celeste2), var(--turquesa));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    #faq-cta p {
+      color: rgba(255,255,255,.6);
+      max-width: 500px;
+      margin: 0 auto 2.8rem;
+      line-height: 1.85;
+      font-size: 1.05rem;
+    }
+    /* Trust pills CTA */
+    .faq-cta-trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+    .faq-cta-trust-item {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .85rem;
+      color: rgba(255,255,255,.55);
+      font-weight: 600;
+    }
+    .faq-cta-trust-item .icon { color: var(--neon); }
+    /* Cards de proceso mini debajo del CTA */
+    .faq-cta-steps {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+    .faq-cta-step {
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+    }
+    .faq-cta-step-num {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: rgba(0,229,255,.12);
+      border: 1.5px solid rgba(0,229,255,.3);
+      color: var(--neon);
+      font-family: var(--font-mono);
+      font-size: .75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .faq-cta-step-text {
+      font-size: .82rem;
+      color: rgba(255,255,255,.5);
+      font-weight: 600;
+    }
+    .faq-cta-step-arrow {
+      color: rgba(255,255,255,.2);
+      font-size: 1rem;
+      margin: 0 1rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .faq-highlights-grid { grid-template-columns: repeat(2, 1fr); }
+      .faq-layout { grid-template-columns: 1fr; }
+      .faq-cat-nav { position: static; display: flex; flex-wrap: wrap; gap: .4rem; padding: 1rem; border-radius: var(--radius); }
+      .faq-cat-nav-title { display: none; }
+      .faq-cat-btn { width: auto; padding: .5rem 1rem; border-radius: 50px; border: 1.5px solid rgba(0,200,248,.2); font-size: .8rem; }
+      .faq-cat-btn::before { display: none; }
+      .faq-cat-btn:hover, .faq-cat-btn.active { background: rgba(0,200,248,.1); border-color: rgba(0,200,248,.4); }
+      .faq-why-grid { grid-template-columns: repeat(2, 1fr); }
+      .faq-hero-illustration { display: none; }
+    }
+    @media (max-width: 700px) {
+      #faq-hero { padding: 8rem 5% 4.5rem; }
+      .faq-highlights-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .faq-why-grid { grid-template-columns: 1fr; }
+      .faq-cta-trust { flex-direction: column; gap: 1rem; }
+      .faq-cta-steps { flex-direction: column; gap: .8rem; }
+      .faq-cta-step-arrow { transform: rotate(90deg); margin: 0; }
+    }
+    @media (max-width: 480px) {
+      .faq-highlights-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9343190716244198" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- ── CURSOR PERSONALIZADO ── -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ══════════════════════════════════════════════════════
+     NAVBAR — Idéntico al resto del sitio
+════════════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <a href="/" class="logo">Millesvc<em>Studio</em></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/servicios/">Servicios</a></li>
+    <li><a href="/proyectos/">Proyectos</a></li>
+    <li><a href="/demos/">Demos</a></li>
+    <li><a href="/sobremi/">Sobre mí</a></li>
+    <li><a href="/faq/" class="active">Preguntas Frecuentes</a></li>
+    <li><a href="/contacto/">Contacto</a></li>
+  </ul>
+  <a href="/cotizar/" class="nav-cta">Cotizar →</a>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════
+     HERO FAQ
+════════════════════════════════════════════════════════ -->
+<section id="faq-hero">
+  <div class="faq-hero-grid"></div>
+  <div class="faq-hero-body">
+
+    <div class="faq-hero-content">
+      <div class="faq-badge">❓ Preguntas Frecuentes</div>
+      <h1>
+        Todo lo que necesitas saber<br>
+        <span>antes de comenzar tu proyecto.</span>
+      </h1>
+      <p>
+        Respondemos las dudas más frecuentes para que puedas tomar
+        una decisión con total confianza. Sin letra chica, sin tecnicismos.
+      </p>
+    </div>
+
+    <!-- Ilustración SVG minimalista flotante -->
+    <svg class="faq-hero-illustration" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="110" cy="110" r="95" fill="url(#heroGrad)" opacity=".1"/>
+      <circle cx="110" cy="110" r="95" stroke="url(#heroStroke)" stroke-width="1.5" opacity=".25"/>
+      <!-- Burbuja principal -->
+      <rect x="38" y="55" width="144" height="90" rx="16" fill="url(#bubbleGrad)" opacity=".9"/>
+      <rect x="38" y="55" width="144" height="90" rx="16" stroke="url(#heroStroke)" stroke-width="1.5"/>
+      <!-- Líneas de texto simuladas -->
+      <rect x="56" y="79" width="70" height="8"  rx="4" fill="white" opacity=".7"/>
+      <rect x="56" y="95" width="100" height="6" rx="3" fill="white" opacity=".4"/>
+      <rect x="56" y="109" width="80" height="6" rx="3" fill="white" opacity=".4"/>
+      <!-- Signo de interrogación -->
+      <text x="158" y="118" font-size="36" font-weight="900" fill="url(#qGrad)" font-family="Outfit, sans-serif" opacity=".9">?</text>
+      <!-- Cola de burbuja -->
+      <path d="M68 145 L54 163 L88 148" fill="url(#bubbleGrad)" stroke="url(#heroStroke)" stroke-width="1.5" stroke-linejoin="round"/>
+      <!-- Puntos decorativos -->
+      <circle cx="42"  cy="40"  r="5" fill="var(--neon)"     opacity=".5"/>
+      <circle cx="178" cy="38"  r="3" fill="var(--turquesa)" opacity=".4"/>
+      <circle cx="190" cy="170" r="4" fill="var(--cyan)"     opacity=".35"/>
+      <circle cx="28"  cy="168" r="3" fill="var(--neon)"     opacity=".3"/>
+      <defs>
+        <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#00c8f8"/>
+          <stop offset="100%" stop-color="#00c9b1"/>
+        </linearGradient>
+        <linearGradient id="heroStroke" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#00c8f8"/>
+          <stop offset="100%" stop-color="#00e5ff"/>
+        </linearGradient>
+        <linearGradient id="bubbleGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#062030" stop-opacity=".85"/>
+          <stop offset="100%" stop-color="#063650" stop-opacity=".9"/>
+        </linearGradient>
+        <linearGradient id="qGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#00e5ff"/>
+          <stop offset="100%" stop-color="#00c9b1"/>
+        </linearGradient>
+      </defs>
+    </svg>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     HIGHLIGHTS — 4 tarjetas estilo testi-stat-card
+════════════════════════════════════════════════════════ -->
+<section id="faq-highlights">
+  <div class="faq-highlights-grid">
+
+    <div class="faq-hl-card reveal">
+      <span class="faq-hl-icon">💬</span>
+      <div class="faq-hl-value">Respuesta en &lt;24h</div>
+      <div class="faq-hl-label">Tiempo máximo de respuesta</div>
+      <div class="faq-hl-sub">// WhatsApp + Email</div>
+    </div>
+
+    <div class="faq-hl-card reveal">
+      <span class="faq-hl-icon">🚀</span>
+      <div class="faq-hl-value">5–7 días</div>
+      <div class="faq-hl-label">Entrega de Landing Page</div>
+      <div class="faq-hl-sub">// Hábiles desde el inicio</div>
+    </div>
+
+    <div class="faq-hl-card reveal">
+      <span class="faq-hl-icon">⭐</span>
+      <div class="faq-hl-value">Soporte incluido</div>
+      <div class="faq-hl-label">En todos los proyectos</div>
+      <div class="faq-hl-sub">// Sin costo adicional</div>
+    </div>
+
+    <div class="faq-hl-card reveal">
+      <span class="faq-hl-icon">📱</span>
+      <div class="faq-hl-value">100% Responsive</div>
+      <div class="faq-hl-label">Diseño adaptado a celular</div>
+      <div class="faq-hl-sub">// Mobile-first siempre</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     BUSCADOR VISUAL
+════════════════════════════════════════════════════════ -->
+<section id="faq-search-section">
+  <div class="faq-search-header">
+    <div class="section-tag">Preguntas frecuentes</div>
+    <h2 class="titulo reveal">
+      Resolvemos las consultas<br><span>que recibimos con mayor frecuencia</span>
+    </h2>
+    <p class="subtitulo reveal" style="margin: 1rem auto 0; text-align: center;">
+      Si no encuentras lo que buscas, escríbenos por WhatsApp. Te respondemos en menos de 24 horas.
+    </p>
+  </div>
+
+  <div class="faq-search-wrap reveal">
+    <span class="faq-search-icon">🔍</span>
+    <input
+      class="faq-search-input"
+      type="text"
+      placeholder="Buscar una pregunta..."
+      id="faqSearchInput"
+      autocomplete="off"
+    />
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     ACORDEÓN FAQ — Layout con nav de categorías
+════════════════════════════════════════════════════════ -->
+<section id="faq-accordion">
+  <div class="faq-layout">
+
+    <!-- Sidebar de categorías -->
+    <aside class="faq-cat-nav" id="faqCatNav">
+      <div class="faq-cat-nav-title">// Categorías</div>
+      <button class="faq-cat-btn active" onclick="scrollToGroup('faq-desarrollo-web', this)">🚀 Desarrollo web</button>
+      <button class="faq-cat-btn" onclick="scrollToGroup('faq-tienda-online', this)">🛒 Tienda Online</button>
+      <button class="faq-cat-btn" onclick="scrollToGroup('faq-hosting', this)">🌐 Hosting y Dominio</button>
+      <button class="faq-cat-btn" onclick="scrollToGroup('faq-seo', this)">🔍 SEO</button>
+      <button class="faq-cat-btn" onclick="scrollToGroup('faq-soporte', this)">🛠 Soporte</button>
+      <button class="faq-cat-btn" onclick="scrollToGroup('faq-pagos', this)">💳 Pagos</button>
+      <button class="faq-cat-btn" onclick="scrollToGroup('faq-entrega', this)">📦 Entrega</button>
+    </aside>
+
+    <!-- Panel de preguntas -->
+    <div class="faq-groups" id="faqGroups">
+
+      <div class="faq-group" id="faq-desarrollo-web">
+        <div class="faq-group-header">
+          <div class="faq-group-icon">🚀</div>
+          <h3 class="faq-group-title">Desarrollo web</h3>
+          <span class="faq-group-count">2 preguntas</span>
+        </div>
+
+        <div class="faq-item reveal" onclick="toggleFaq(this)">
+          <button class="faq-q">
+            ¿Qué tipo de proyectos desarrollan?
+            <span class="faq-q-icon">+</span>
+          </button>
+          <div class="faq-a-wrap">
+            <p class="faq-a">Creamos landing pages, sitios corporativos, portales, tiendas online y funcionalidades a medida. Cada solución se adapta a la estrategia y al objetivo de negocio del cliente.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" onclick="toggleFaq(this)">
+          <button class="faq-q">
+            ¿Puedo solicitar cambios durante el desarrollo?
+            <span class="faq-q-icon">+</span>
+          </button>
+          <div class="faq-a-wrap">
+            <p class="faq-a">Sí. Incluimos rondas de revisión y ajustes para que el resultado final sea coherente con lo que esperas. Los cambios mayores se cotizan con total transparencia.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-group" id="faq-tienda-online">
+        <div class="faq-group-header">
+          <div class="faq-group-icon">🛒</div>
+          <h3 class="faq-group-title">Tienda online</h3>
+          <span class="faq-group-count">2 preguntas</span>
+        </div>
+
+        <div class="faq-item reveal" onclick="toggleFaq(this)">
+          <button class="faq-q">
+            ¿Se pueden integrar pagos y carrito?
+            <span class="faq-q-icon">+</span>
+          </button>
+          <div class="faq-a-wrap">
+            <p class="faq-a">Sí. Diseñamos tiendas con carrito, catálogo, filtros, WhatsApp o integraciones de pago según el tipo de negocio y el país donde operes.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" onclick="toggleFaq(this)">
+          <button class="faq-q">
+            ¿Puedo administrar mis productos después del lanzamiento?
+            <span class="faq-q-icon">+</span>
+          </button>
+          <div class="faq-a-wrap">
+            <p class="faq-a">Sí. Te entregamos un panel claro y fácil de manejar para actualizar productos, precios, stock y contenido sin depender de nosotros en cada cambio.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-group" id="faq-hosting">
+        <div class="faq-group-header">
+          <div class="faq-group-icon">🌐</div>
+          <h3 class="faq-group-title">Hosting y Dominio</h3>
+          <span class="faq-group-count">2 preguntas</span>
+        </div>
+
+        <div class="faq-item reveal" onclick="toggleFaq(this)">
+          <button class="faq-q">
+            ¿Necesito contratar hosting por mi cuenta?
+            <span class="faq-q-icon">+</span>
+          </button>
+          <div class="faq-a-wrap">
+            <p class="faq-a">Depende del proyecto. Para sitios estáticos podemos publicar gratis en GitHub Pages o Netlify. Para proyectos dinámicos te guiamos con opciones accesibles y seguras.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" onclick="toggleFaq(this)">
+          <button class="faq-q">
+            ¿El dominio está incluido?
+            <span class="faq-q-icon">+</span>
+          </button>
+          <div class="faq-a-wrap">
+            <p class="faq-a">El dominio normalmente no va incluido en el precio base, pero te ayudamos a comprarlo, configurarlo y dejarlo listo para publicar en pocos pasos.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-group" id="faq-seo">
+        <div class="faq-group-header">
+          <div class="faq-group-icon">🔍</div>
+          <h3 class="faq-group-title">SEO</h3>
+          <span class="faq-group-count">2 preguntas</span>
+        </div>
+
+        <div class="faq-item reveal" onclick="toggleFaq(this)">
+          <button class="faq-q">
+            ¿Mi sitio aparecerá en Google?
+            <span class="faq-q-icon">+</span>
+          </button>
+          <div class="faq-a-wrap">
+            <p class="faq-a">Sí. En todos los proyectos dejamos la base técnica para que Google pueda indexar el sitio correctamente: estructura semántica, meta tags, velocidad y Open Graph.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" onclick="toggleFaq(this)">
+          <button class="faq-q">
+            ¿Incluyen Google Analytics o Search Console?
+            <span class="faq-q-icon">+</span>
+          </button>
+          <div class="faq-a-wrap">
+            <p class="faq-a">Sí. También configuramos analítica para que puedas ver tráfico, rendimiento y comportamiento de tus visitantes desde el primer día.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-group" id="faq-soporte">
+        <div class="faq-group-header">
+          <div class="faq-group-icon">🛠</div>
+          <h3 class="faq-group-title">Soporte</h3>
+          <span class="faq-group-count">2 preguntas</span>
+        </div>
+
+        <div class="faq-item reveal" onclick="toggleFaq(this)">
+          <button class="faq-q">
+            ¿Qué incluye el soporte post-entrega?
+            <span class="faq-q-icon">+</span>
+          </button>
+          <div class="faq-a-wrap">
+            <p class="faq-a">Incluimos soporte inicial para correcciones menores, dudas técnicas y ajustes puntuales para que tu web quede funcionando sin complicaciones.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" onclick="toggleFaq(this)">
+          <button class="faq-q">
+            ¿Pueden ayudarme si necesito cambios luego del lanzamiento?
+            <span class="faq-q-icon">+</span>
+          </button>
+          <div class="faq-a-wrap">
+            <p class="faq-a">Claro. Si requieres mejoras, nuevas secciones o cambios de contenido, las coordinamos y te entregamos el plan más conveniente.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-group" id="faq-pagos">
+        <div class="faq-group-header">
+          <div class="faq-group-icon">💳</div>
+          <h3 class="faq-group-title">Pagos</h3>
+          <span class="faq-group-count">2 preguntas</span>
+        </div>
+
+        <div class="faq-item reveal" onclick="toggleFaq(this)">
+          <button class="faq-q">
+            ¿Cómo funciona el pago del proyecto?
+            <span class="faq-q-icon">+</span>
+          </button>
+          <div class="faq-a-wrap">
+            <p class="faq-a">Trabajamos con un esquema claro: una parte al inicio y otra al entregar el resultado final. No pedimos el 100% por adelantado.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" onclick="toggleFaq(this)">
+          <button class="faq-q">
+            ¿Puedo solicitar una cotización sin compromiso?
+            <span class="faq-q-icon">+</span>
+          </button>
+          <div class="faq-a-wrap">
+            <p class="faq-a">Por supuesto. Te enviamos una propuesta personalizada sin costo ni presión para que tomes la decisión con calma.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-group" id="faq-entrega">
+        <div class="faq-group-header">
+          <div class="faq-group-icon">📦</div>
+          <h3 class="faq-group-title">Entrega</h3>
+          <span class="faq-group-count">2 preguntas</span>
+        </div>
+
+        <div class="faq-item reveal" onclick="toggleFaq(this)">
+          <button class="faq-q">
+            ¿Cuánto tarda en entregarse un proyecto?
+            <span class="faq-q-icon">+</span>
+          </button>
+          <div class="faq-a-wrap">
+            <p class="faq-a">Una landing page suele entregarse en una semana, mientras que un proyecto más completo suele tomar entre 2 y 4 semanas según el alcance.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" onclick="toggleFaq(this)">
+          <button class="faq-q">
+            ¿Recibiré el sitio ya publicado?
+            <span class="faq-q-icon">+</span>
+          </button>
+          <div class="faq-a-wrap">
+            <p class="faq-a">Sí. La entrega incluye publicación, revisión final y acompañamiento para que tu web quede lista para recibir visitantes desde el primer día.</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /faq-groups -->
+  </div><!-- /faq-layout -->
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     ¿POR QUÉ ELEGIR MILLESVCSTUDIO? — 6 tarjetas premium
+════════════════════════════════════════════════════════ -->
+<section id="faq-why">
+  <div class="faq-why-header">
+    <div class="section-tag">Por qué elegirnos</div>
+    <h2 class="titulo reveal">¿Por qué elegir<br><span>MillesvcStudio?</span></h2>
+    <p class="subtitulo reveal" style="margin: 1rem auto 0; text-align: center;">
+      No somos una agencia anónima. Somos un equipo real que se compromete con cada proyecto.
+    </p>
+  </div>
+
+  <div class="faq-why-grid">
+
+    <div class="faq-why-card reveal">
+      <div class="faq-why-card-icon">🎯</div>
+      <div class="faq-why-card-check">Desarrollo personalizado</div>
+      <h3 class="faq-why-card-title">Cero templates genéricos</h3>
+      <p class="faq-why-card-desc">
+        Cada proyecto se construye desde cero pensando en tu negocio, tus clientes y tus objetivos. Nada copiado, nada reutilizado.
+      </p>
+    </div>
+
+    <div class="faq-why-card reveal">
+      <div class="faq-why-card-icon">💬</div>
+      <div class="faq-why-card-check">Comunicación constante</div>
+      <h3 class="faq-why-card-title">Siempre disponible</h3>
+      <p class="faq-why-card-desc">
+        Respuesta en menos de 24 horas por WhatsApp o email. Sin silencio radio, sin esperas frustrantes.
+      </p>
+    </div>
+
+    <div class="faq-why-card reveal">
+      <div class="faq-why-card-icon">🔍</div>
+      <div class="faq-why-card-check">SEO incluido</div>
+      <h3 class="faq-why-card-title">Visible en Google desde el día uno</h3>
+      <p class="faq-why-card-desc">
+        Meta tags, estructura semántica y Google Search Console configurado desde la entrega. No publicamos sitios invisibles.
+      </p>
+    </div>
+
+    <div class="faq-why-card reveal">
+      <div class="faq-why-card-icon">🧹</div>
+      <div class="faq-why-card-check">Código limpio</div>
+      <h3 class="faq-why-card-title">HTML, CSS y JS de calidad</h3>
+      <p class="faq-why-card-desc">
+        Código semántico, bien comentado y fácil de mantener. Rápido en carga, estable en el tiempo. Tu inversión dura años.
+      </p>
+    </div>
+
+    <div class="faq-why-card reveal">
+      <div class="faq-why-card-icon">📱</div>
+      <div class="faq-why-card-check">Responsive</div>
+      <h3 class="faq-why-card-title">Perfecto en todos los dispositivos</h3>
+      <p class="faq-why-card-desc">
+        Mobile-first por defecto. Probado en smartphones, tablets y escritorio. El 70% de tus clientes navega desde el celular.
+      </p>
+    </div>
+
+    <div class="faq-why-card reveal">
+      <div class="faq-why-card-icon">🛡️</div>
+      <div class="faq-why-card-check">Soporte</div>
+      <h3 class="faq-why-card-title">No desaparecemos al entregar</h3>
+      <p class="faq-why-card-desc">
+        Período de soporte gratuito incluido post-lanzamiento. Correcciones menores, dudas técnicas y orientación sin costo adicional.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     CTA FINAL — Premium, mejorado respecto a testimonios
+════════════════════════════════════════════════════════ -->
+<section id="faq-cta">
+  <!-- Partículas decorativas de fondo -->
+  <div class="faq-cta-particles" aria-hidden="true">
+    <div class="faq-cta-particle" style="left:8%;  top:15%; --dur:3.2s; --delay:.2s;"></div>
+    <div class="faq-cta-particle" style="left:18%; top:72%; --dur:4.1s; --delay:.9s;"></div>
+    <div class="faq-cta-particle" style="left:32%; top:38%; --dur:3.7s; --delay:.4s;"></div>
+    <div class="faq-cta-particle" style="left:60%; top:20%; --dur:4.4s; --delay:1.2s;"></div>
+    <div class="faq-cta-particle" style="left:74%; top:65%; --dur:3.5s; --delay:.7s;"></div>
+    <div class="faq-cta-particle" style="left:88%; top:42%; --dur:4.8s; --delay:.1s;"></div>
+    <div class="faq-cta-particle" style="left:50%; top:80%; --dur:3.9s; --delay:1.5s;"></div>
+  </div>
+
+  <div class="faq-cta-inner">
+    <!-- Badge pulsante -->
+    <div class="faq-cta-badge">
+      <div class="faq-cta-badge-dot"></div>
+      Respondemos en menos de 24 horas
+    </div>
+
+    <h2>
+      ¿Aún tienes dudas?<br>
+      <span>Conversemos sobre tu proyecto.</span>
+    </h2>
+
+    <p>
+      Cuéntanos qué necesitas. Sin tecnicismos, sin presiones.
+      Revisamos tu caso y te enviamos una propuesta personalizada sin costo.
+    </p>
+
+    <!-- Pasos de confianza visuales -->
+    <div class="faq-cta-steps">
+      <div class="faq-cta-step">
+        <div class="faq-cta-step-num">1</div>
+        <span class="faq-cta-step-text">Nos cuentas tu idea</span>
+      </div>
+      <span class="faq-cta-step-arrow">→</span>
+      <div class="faq-cta-step">
+        <div class="faq-cta-step-num">2</div>
+        <span class="faq-cta-step-text">Recibimos y analizamos</span>
+      </div>
+      <span class="faq-cta-step-arrow">→</span>
+      <div class="faq-cta-step">
+        <div class="faq-cta-step-num">3</div>
+        <span class="faq-cta-step-text">Te enviamos propuesta</span>
+      </div>
+      <span class="faq-cta-step-arrow">→</span>
+      <div class="faq-cta-step">
+        <div class="faq-cta-step-num">4</div>
+        <span class="faq-cta-step-text">¡Comenzamos tu proyecto!</span>
+      </div>
+    </div>
+
+    <!-- Puntos de confianza -->
+    <div class="faq-cta-trust">
+      <div class="faq-cta-trust-item">
+        <span class="icon">✔</span> Sin pago por adelantado
+      </div>
+      <div class="faq-cta-trust-item">
+        <span class="icon">✔</span> Cotización gratuita
+      </div>
+      <div class="faq-cta-trust-item">
+        <span class="icon">✔</span> Propuesta personalizada
+      </div>
+      <div class="faq-cta-trust-item">
+        <span class="icon">✔</span> 100% hecho en Chile
+      </div>
+    </div>
+
+    <!-- Botones -->
+    <div class="cta-actions">
+      <a href="/cotizar/" class="cta-btn-primary">
+        Solicitar Cotización <span class="btn-arrow">→</span>
+      </a>
+      <a href="https://wa.me/56990643785?text=Hola%20Milles%2C%20vi%20el%20FAQ%20y%20quiero%20cotizar%20una%20p%C3%A1gina%20web."
+         target="_blank" rel="noopener"
+         class="cta-btn-secondary">
+        <span class="btn-icon">💬</span> Hablar por WhatsApp
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     FOOTER — Idéntico al resto del sitio
+════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="/" class="footer-logo">Millesvc<span>Studio</span></a>
+      <p class="footer-desc">Diseño y desarrollo de páginas web profesionales para negocios que quieren crecer online.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Páginas</h4>
+      <ul>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/servicios/">Servicios</a></li>
+        <li><a href="/proyectos/">Proyectos</a></li>
+        <li><a href="/demos/">Demos</a></li>
+        <li><a href="/sobremi/">Sobre mí</a></li>
+        <li><a href="/faq/">Preguntas Frecuentes</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="/servicios/">Landing Page</a></li>
+        <li><a href="/servicios/">Sitio Multipágina</a></li>
+        <li><a href="/servicios/">Tienda Online</a></li>
+        <li><a href="/servicios/">SEO</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="/cotizar/">Cotizar</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+        <li><a href="https://wa.me/56990643785" target="_blank">WhatsApp</a></li>
+        <li><a href="mailto:hola@millesvcstudio.cl">Email</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Millesvc Studio · Hecho con ❤️ en Chile</span>
+    <span>Diseño & Desarrollo por <a href="#">Millesvc</a></span>
+  </div>
+</footer>
+
+<!-- ── BOTÓN FLOTANTE WHATSAPP ── -->
+<a href="https://wa.me/56990643785?text=Hola!" target="_blank" class="wsp-btn">
+  <div class="wsp-tooltip">¡Escríbeme!</div>
+  <svg viewBox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ══════════════════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════════════════ -->
+<script src="/main.js"></script>
+
+<script>
+  /* ── ACORDEÓN FAQ ── */
+  function toggleFaq(item) {
+    const isOpen = item.classList.contains('open');
+    // Cierra todos en el mismo grupo
+    const group = item.closest('.faq-group');
+    group.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    // Abre/cierra el actual
+    if (!isOpen) item.classList.add('open');
+  }
+
+  /* ── NAVEGACIÓN DE CATEGORÍAS ── */
+  function scrollToGroup(id, btn) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const offset = 96;
+    const top = el.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+    // Actualizar botón activo
+    document.querySelectorAll('.faq-cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  /* ── BÚSQUEDA EN TIEMPO REAL ── */
+  document.getElementById('faqSearchInput').addEventListener('input', function () {
+    const query = this.value.toLowerCase().trim();
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const q = item.querySelector('.faq-q').textContent.toLowerCase();
+      const a = item.querySelector('.faq-a').textContent.toLowerCase();
+      item.style.display = (!query || q.includes(query) || a.includes(query)) ? '' : 'none';
+    });
+    // Mostrar/ocultar grupos vacíos
+    document.querySelectorAll('.faq-group').forEach(group => {
+      const visible = [...group.querySelectorAll('.faq-item')].some(i => i.style.display !== 'none');
+      group.style.display = visible ? '' : 'none';
+    });
+  });
+
+  /* ── RESALTADO DE CATEGORÍA ACTIVA AL HACER SCROLL ── */
+  const faqGroups = document.querySelectorAll('.faq-group[id]');
+  const catBtns   = document.querySelectorAll('.faq-cat-btn');
+  const catIds    = ['faq-desarrollo-web','faq-tienda-online','faq-hosting','faq-seo','faq-soporte','faq-pagos','faq-entrega'];
+
+  const catObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = catIds.indexOf(entry.target.id);
+        if (idx === -1) return;
+        catBtns.forEach(b => b.classList.remove('active'));
+        catBtns[idx]?.classList.add('active');
+      }
+    });
+  }, { threshold: 0.35 });
+
+  faqGroups.forEach(g => catObserver.observe(g));
+</script>
+
+</body>
+</html>
