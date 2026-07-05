@@ -112,6 +112,51 @@ const PRESUPUESTOS = [
   '$300.000', '$400.000', '$500.000', '$600.000', '$800.000', '$1.000.000+'
 ];
 let cotTipoSel = '';
+let cotizarSubmitInProgress = false;
+
+function setCotizarSubmitState(isSubmitting) {
+  const btn = document.getElementById('btnEnviarCotizacion');
+  if (!btn) return;
+  btn.disabled = isSubmitting;
+  btn.setAttribute('aria-busy', String(isSubmitting));
+  if (isSubmitting) {
+    btn.dataset.originalText = btn.dataset.originalText || btn.textContent;
+    btn.textContent = 'Enviando...';
+  } else {
+    btn.textContent = btn.dataset.originalText || '📲 Enviar por WhatsApp';
+  }
+}
+
+function validarCotizacion() {
+  const nombre = document.getElementById('cotNombre')?.value.trim() || '';
+  const tel = document.getElementById('cotTel')?.value.trim() || '';
+  const email = document.getElementById('cotEmail')?.value.trim() || '';
+  const nombreInput = document.getElementById('cotNombre');
+  const telInput = document.getElementById('cotTel');
+  const emailInput = document.getElementById('cotEmail');
+
+  if (!cotTipoSel) {
+    goStep(1);
+    return false;
+  }
+
+  if (!nombre) {
+    nombreInput?.focus();
+    return false;
+  }
+
+  if (!tel) {
+    telInput?.focus();
+    return false;
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    emailInput?.focus();
+    return false;
+  }
+
+  return true;
+}
 
 window.updatePresupuesto = function (v) {
   const el = document.getElementById('presupuestoVal');
@@ -160,18 +205,41 @@ function fillResumen() {
 }
 
 window.enviarCotizacion = function () {
+  if (cotizarSubmitInProgress) return;
+  if (!validarCotizacion()) return;
+
+  cotizarSubmitInProgress = true;
+  setCotizarSubmitState(true);
+
   const tipo    = cotTipoSel;
   const presup  = PRESUPUESTOS[document.getElementById('presupuestoSlider').value] + ' CLP';
-  const nombre  = document.getElementById('cotNombre').value;
-  const tel     = document.getElementById('cotTel').value;
-  const email   = document.getElementById('cotEmail').value;
-  const empresa = document.getElementById('cotEmpresa').value || 'No indicada';
-  const nota    = document.getElementById('cotNota').value    || 'Sin notas';
+  const nombre  = document.getElementById('cotNombre').value.trim();
+  const tel     = document.getElementById('cotTel').value.trim();
+  const email   = document.getElementById('cotEmail').value.trim();
+  const empresa = document.getElementById('cotEmpresa').value.trim() || 'No indicada';
+  const nota    = document.getElementById('cotNota').value.trim() || 'Sin notas';
   const msg = `🌐 *Cotización — Millesvc Studio*\n\n📋 *Tipo:* ${tipo}\n💰 *Presupuesto:* ${presup}\n\n👤 *Nombre:* ${nombre}\n📱 *Tel:* ${tel}\n✉️ *Email:* ${email}\n🏢 *Empresa:* ${empresa}\n\n📝 *Notas:* ${nota}`;
-  window.open(`https://wa.me/56990643785?text=${encodeURIComponent(msg)}`, '_blank');
-  document.querySelectorAll('.cotizar-page').forEach(p => p.style.display = 'none');
-  document.getElementById('cotizarSteps').style.display  = 'none';
-  document.getElementById('cotizarSuccess').style.display = 'block';
+
+  const waUrl = `https://wa.me/56990643785?text=${encodeURIComponent(msg)}`;
+
+  try {
+    const popup = window.open(waUrl, '_blank', 'noopener,noreferrer');
+    if (!popup) {
+      const fallbackLink = document.createElement('a');
+      fallbackLink.href = waUrl;
+      fallbackLink.target = '_blank';
+      fallbackLink.rel = 'noopener noreferrer';
+      document.body.appendChild(fallbackLink);
+      fallbackLink.click();
+      document.body.removeChild(fallbackLink);
+    }
+  } catch (error) {
+    // Se continúa con la redirección aunque el navegador bloquee la apertura.
+  }
+
+  window.setTimeout(() => {
+    window.location.assign('gracias.html');
+  }, 300);
 };
 
 // ── CONTACTO WSP ──
@@ -191,9 +259,18 @@ window.enviarContacto = function () {
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  const enviarBtn = document.getElementById('btnEnviarCotizacion');
+  if (enviarBtn && typeof window.enviarCotizacion === 'function') {
+    enviarBtn.onclick = function (event) {
+      if (event) event.preventDefault();
+      window.enviarCotizacion();
+    };
+  }
+
   /* ─── Navbar scroll ─── */
   const navbar = document.getElementById('navbar');
   const onScroll = () => {
+    if (!navbar) return;
     navbar.classList.toggle('scrolled', window.scrollY > 40);
   };
   window.addEventListener('scroll', onScroll, { passive: true });
