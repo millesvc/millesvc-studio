@@ -101,7 +101,7 @@ Cada proyecto sigue una estructura clara:
 
 📱 WhatsApp: [ Hablar por WhatsApp ](https://wa.me/56990643785?text=Hola%20quiero%20una%20página%20web)
 
-📷 Instagram: [@millesvcstudio](https://instagram.com/millesvcstudio)
+📷 Instagram: [@milles.dev](https://instagram.com/milles.dev)
 
 ---
 
