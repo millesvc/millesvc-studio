@@ -12,6 +12,12 @@
   gtag('config', 'AW-18266791992');
   gtag('config', 'G-NG5H9QKBJM'); // Google Analytics 4 (MillesvcStudio)
 </script>
+  <!-- Evento de conversión: generate_lead (se ejecuta una sola vez al terminar de cargar la página) -->
+  <script>
+    window.addEventListener('load', function () {
+      gtag('event', 'generate_lead', { currency: 'CLP', value: 1 });
+    }, { once: true });
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Gracias por contactar a MillesvcStudio. Hemos recibido tu solicitud y nos comunicaremos contigo dentro de las próximas 24 horas hábiles."/>
   <link rel="canonical" href="https://millesvcstudio.com/gracias/"/>
