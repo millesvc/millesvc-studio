@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">MillesvcStudio</title>
+  <desc id="desc">Diseño web, e-commerce, SEO y automatización de ventas por WhatsApp en Chile.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0faff"/>
+      <stop offset="1" stop-color="#b8eeff"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#00c8f8"/>
+      <stop offset=".55" stop-color="#00e5ff"/>
+      <stop offset="1" stop-color="#00c9b1"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#00e5ff" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#00e5ff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#00b4e0" stroke-opacity=".08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#background)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <ellipse cx="1030" cy="315" rx="420" ry="390" fill="url(#glow)"/>
+  <rect x="76" y="74" width="54" height="54" rx="14" fill="#062030"/>
+  <text x="103" y="113" text-anchor="middle" font-family="Arial,sans-serif" font-size="36" font-weight="900" fill="url(#accent)">M</text>
+  <text x="151" y="111" font-family="Arial,sans-serif" font-size="31" font-weight="700" fill="#062030">Millesvc<tspan fill="#00b4e0">Studio</tspan></text>
+  <rect x="78" y="204" width="268" height="42" rx="21" fill="#00c8f8" fill-opacity=".10" stroke="#00b4e0" stroke-opacity=".35"/>
+  <text x="212" y="231" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" letter-spacing="2" fill="#0077a3">SOLUCIONES DIGITALES · CHILE</text>
+  <text x="78" y="327" font-family="Arial,sans-serif" font-size="66" font-weight="800" letter-spacing="-2" fill="#062030">Tu negocio merece</text>
+  <text x="78" y="407" font-family="Arial,sans-serif" font-size="66" font-weight="800" letter-spacing="-2" fill="url(#accent)">una web que vende</text>
+  <text x="82" y="473" font-family="Arial,sans-serif" font-size="25" fill="#426779">Diseño web · E-commerce · SEO · Ventas por WhatsApp</text>
+  <rect x="78" y="530" width="1044" height="2" fill="#00b4e0" fill-opacity=".25"/>
+  <text x="80" y="572" font-family="Arial,sans-serif" font-size="19" font-weight="600" fill="#062030">millesvcstudio.com</text>
+</svg>

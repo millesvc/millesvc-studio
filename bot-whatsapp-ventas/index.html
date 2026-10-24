@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bot de ventas para WhatsApp en Chile | MillesvcStudio</title>
+  <meta name="description" content="Implementación de bots de ventas para WhatsApp en Chile: respuestas automáticas, calificación de prospectos y derivación a tu equipo. Cotiza una solución a tu medida."/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://millesvcstudio.com/bot-whatsapp-ventas/"/>
+  <link rel="icon" href="/favicon.svg"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="MillesvcStudio"/>
+  <meta property="og:title" content="Bot de ventas para WhatsApp en Chile | MillesvcStudio"/>
+  <meta property="og:description" content="Automatiza la primera atención, califica consultas y deriva oportunidades a tu equipo con un bot de ventas para WhatsApp diseñado para tu negocio."/>
+  <meta property="og:url" content="https://millesvcstudio.com/bot-whatsapp-ventas/"/>
+  <meta property="og:image" content="https://millesvcstudio.com/og-default.svg"/>
+  <meta property="og:locale" content="es_CL"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Bot de ventas para WhatsApp en Chile | MillesvcStudio"/>
+  <meta name="twitter:description" content="Automatiza la primera atención y organiza tus oportunidades de venta por WhatsApp."/>
+  <meta name="twitter:image" content="https://millesvcstudio.com/og-default.svg"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/styles.css"/>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Bot de ventas para WhatsApp",
+    "serviceType": "Implementación de asistente automatizado de atención y ventas por WhatsApp",
+    "description": "Diseño e implementación de flujos conversacionales para responder consultas frecuentes, calificar prospectos y derivar conversaciones a una persona del equipo.",
+    "provider": {"@type": "Organization", "@id": "https://millesvcstudio.com/#organization", "name": "MillesvcStudio", "url": "https://millesvcstudio.com/", "telephone": "+56990643785"},
+    "areaServed": {"@type": "Country", "name": "Chile"},
+    "url": "https://millesvcstudio.com/bot-whatsapp-ventas/"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"¿Qué puede hacer el bot de ventas para WhatsApp?","acceptedAnswer":{"@type":"Answer","text":"Puede responder preguntas frecuentes, recopilar información inicial, calificar consultas y derivar la conversación a una persona. Las funciones finales se definen según tu proceso de venta y las herramientas disponibles."}},
+      {"@type":"Question","name":"¿El bot reemplaza a mi equipo de ventas?","acceptedAnswer":{"@type":"Answer","text":"No necesariamente. Se puede configurar para atender la primera consulta y pasar los casos que requieren asesoría, negociación o seguimiento a una persona de tu equipo."}},
+      {"@type":"Question","name":"¿Cuánto cuesta implementar un bot para WhatsApp?","acceptedAnswer":{"@type":"Answer","text":"El valor se cotiza según los flujos de conversación, integraciones, volumen y plataforma requerida. La cotización se prepara después de revisar las necesidades del negocio."}},
+      {"@type":"Question","name":"¿Necesito WhatsApp Business para usar un bot?","acceptedAnswer":{"@type":"Answer","text":"La solución y los requisitos dependen de la plataforma e integraciones elegidas. Revisamos el número, la cuenta y las herramientas disponibles antes de definir el alcance."}}
+    ]
+  }
+  </script>
+  <style>
+    .wa-sales-inner { max-width: 1040px; margin: 0 auto; }
+    .wa-sales-cta { display:flex; gap:1rem; flex-wrap:wrap; }
+    .wa-sales-section { padding: 5rem 5%; }
+    .wa-sales-section.alt { background: var(--blanco2); }
+    .wa-sales-content { max-width: 1040px; margin: 0 auto; }
+    .wa-sales-content h2 { font-size: clamp(1.8rem,4vw,2.8rem); color:var(--oscuro); margin-bottom:1rem; }
+    .wa-sales-content > p { max-width:800px; color:var(--gris); line-height:1.75; }
+    .wa-sales-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:2rem; }
+    .wa-sales-card { padding:1.6rem; }
+    .wa-sales-card h3 { margin:.5rem 0; color:var(--oscuro); }
+    .wa-sales-card p, .wa-sales-content li { color:var(--gris); line-height:1.7; }
+    .wa-sales-content ul { padding-left:1.3rem; margin-top:1rem; }
+    .wa-sales-content li + li { margin-top:.5rem; }
+    .wa-sales-faq { display:grid; gap:1rem; margin-top:1.5rem; }
+    .wa-sales-faq details { background:var(--blanco); border:1px solid rgba(0,200,248,.18); border-radius:12px; padding:1.2rem 1.4rem; }
+    .wa-sales-faq summary { color:var(--oscuro); font-weight:800; cursor:none; }
+    .wa-sales-faq p { color:var(--gris); line-height:1.7; margin:.8rem 0 0; }
+    @media(max-width:760px) { .wa-sales-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <nav id="navbar">
+    <a href="/" class="logo">Millesvc<em>Studio</em></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/servicios/">Servicios</a></li>
+      <li><a href="/proyectos/">Proyectos</a></li>
+      <li><a href="/demos/">Demos</a></li>
+      <li><a href="/sobremi/">Sobre mí</a></li>
+      <li><a href="/faq/">Preguntas Frecuentes</a></li>
+      <li><a href="/contacto/">Contacto</a></li>
+    </ul>
+    <a href="/cotizar/?servicio=bot-whatsapp" class="nav-cta">Cotizar →</a>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </nav>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero-grid"></div>
+      <div class="page-hero-content wa-sales-inner">
+        <div class="section-tag">Automatización comercial</div>
+        <h1>Tu ejecutivo de ventas virtual <span>por WhatsApp</span></h1>
+        <p>Implemento un bot de ventas para WhatsApp que responde consultas iniciales, identifica qué necesita cada persona y organiza las oportunidades para tu equipo. Diseñamos el flujo según tus servicios, clientes y forma de vender.</p>
+        <div class="wa-sales-cta">
+          <a href="/cotizar/?servicio=bot-whatsapp" class="btn btn-cyan">Cotizar mi bot de WhatsApp →</a>
+          <a href="https://wa.me/56990643785?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20un%20bot%20de%20ventas%20para%20WhatsApp" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Conversar sobre mi negocio</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="wa-sales-section">
+      <div class="wa-sales-content">
+        <h2>¿Qué puede hacer un asistente de ventas por WhatsApp?</h2>
+        <p>Un bot bien definido atiende tareas repetitivas y ayuda a dar continuidad a las consultas. El alcance se acuerda antes de implementar, según tu operación y las herramientas compatibles.</p>
+        <div class="wa-sales-grid">
+          <article class="card wa-sales-card"><div class="srv-full-icon">💬</div><h3>Responder consultas frecuentes</h3><p>Entrega información inicial sobre productos, servicios, horarios y próximos pasos con respuestas alineadas a tu negocio.</p></article>
+          <article class="card wa-sales-card"><div class="srv-full-icon">🎯</div><h3>Calificar prospectos</h3><p>Hace preguntas acordadas para entender qué busca la persona y recoger los datos necesarios para dar seguimiento.</p></article>
+          <article class="card wa-sales-card"><div class="srv-full-icon">🤝</div><h3>Derivar a una persona</h3><p>Transfiere la conversación a tu equipo cuando se necesita atención personalizada o una decisión comercial.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="wa-sales-section alt">
+      <div class="wa-sales-content">
+        <h2>Diseñado para tu proceso comercial</h2>
+        <p>Antes de implementar, revisamos cómo llegan hoy tus consultas y qué información ayuda a convertirlas en ventas. A partir de eso definimos los mensajes, las reglas de derivación y las integraciones viables.</p>
+        <ul>
+          <li>Mapa de conversación y respuestas frecuentes.</li>
+          <li>Captura de datos y criterios para clasificar consultas.</li>
+          <li>Derivación a ventas o soporte según el caso.</li>
+          <li>Integraciones con sistemas existentes sujetas a compatibilidad y alcance.</li>
+          <li>Configuración, puesta en marcha y orientación de uso según lo acordado.</li>
+        </ul>
+        <p style="margin-top:1rem;"><strong>La cotización se prepara a medida.</strong> El precio y los requisitos dependen del volumen, las funciones y la plataforma de WhatsApp o proveedor que use tu negocio.</p>
+      </div>
+    </section>
+
+    <section class="wa-sales-section">
+      <div class="wa-sales-content">
+        <h2>Preguntas frecuentes sobre bots de WhatsApp para empresas</h2>
+        <div class="wa-sales-faq">
+          <details><summary>¿El bot reemplaza a mi equipo de ventas?</summary><p>No necesariamente. Puede resolver la primera atención y derivar los casos que requieren asesoría, negociación o seguimiento a una persona.</p></details>
+          <details><summary>¿El bot puede responder usando la información de mi negocio?</summary><p>Sí. El contenido y las respuestas se preparan a partir de la información que entregues y de las funciones acordadas para el proyecto.</p></details>
+          <details><summary>¿Cuánto cuesta implementar un bot para WhatsApp?</summary><p>El valor se cotiza según el flujo conversacional, las integraciones, el volumen esperado y la plataforma requerida. Primero revisamos tus objetivos y luego definimos el alcance.</p></details>
+          <details><summary>¿Necesito WhatsApp Business o una API?</summary><p>Los requisitos dependen de la solución y del proveedor seleccionado. Revisamos tu cuenta y tus herramientas actuales antes de recomendar una configuración.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="cta-band-inner">
+        <h2>Conversemos sobre tu <span>ejecutivo de ventas virtual</span></h2>
+        <p>Cuéntame cómo llegan tus consultas y te preparo una propuesta a medida para automatizar la primera atención por WhatsApp.</p>
+        <div class="cta-actions">
+          <a href="/cotizar/?servicio=bot-whatsapp" class="cta-btn-primary">Cotizar ahora <span class="btn-arrow">→</span></a>
+          <a href="/servicios/" class="cta-btn-secondary"><span class="btn-icon">💬</span> Ver todos los servicios</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div><a href="/" class="footer-logo">Millesvc<span>Studio</span></a><p class="footer-desc">Diseño y desarrollo de páginas web profesionales para negocios que quieren crecer online.</p></div>
+      <div class="footer-col"><h4>Páginas</h4><ul><li><a href="/">Inicio</a></li><li><a href="/servicios/">Servicios</a></li><li><a href="/demos/">Demos</a></li><li><a href="/sobremi/">Sobre mí</a></li><li><a href="/faq/">Preguntas Frecuentes</a></li><li><a href="/contacto/">Contacto</a></li></ul></div>
+      <div class="footer-col"><h4>Servicios</h4><ul><li><a href="/servicios/">Landing Page</a></li><li><a href="/servicios/">Sitio Multipágina</a></li><li><a href="/servicios/">Tienda Online</a></li><li><a href="/seo-para-negocios-chile/">SEO para negocios</a></li><li><a href="/bot-whatsapp-ventas/">Bot de ventas por WhatsApp</a></li></ul></div>
+      <div class="footer-col"><h4>Contacto</h4><ul><li><a href="/cotizar/?servicio=bot-whatsapp">Cotizar</a></li><li><a href="/contacto/">Contacto</a></li><li><a href="https://wa.me/56990643785" target="_blank" rel="noopener noreferrer">WhatsApp</a></li><li><a href="mailto:milles.toledo.dev@gmail.com">Email</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Millesvc Studio · Hecho con ❤️ en Chile</span><span>Diseño & Desarrollo por <a href="/">Millesvc</a></span></div>
+  </footer>
+  <a href="https://wa.me/56990643785?text=Hola%2C%20quiero%20cotizar%20un%20bot%20de%20ventas%20para%20WhatsApp" class="wsp-btn" target="_blank" rel="noopener noreferrer" aria-label="Cotizar bot de ventas por WhatsApp"><div class="wsp-tooltip">¡Escríbeme!</div><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.871.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.347-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+  <script src="/main.js"></script>
+</body>
+</html>

@@ -39,7 +39,7 @@
   });
 
   // Efecto hover en elementos interactivos
-  const HOVER_SEL = 'a, button, label, [onclick], select, .filter-btn, .tipo-card, .faq-q, .hamburger, .cta-btn-primary, .cta-btn-secondary, .nav-cta, .btn, .card, .srv-card, .srv-full-card, .pkg-card, .proy-card, .proceso-card, .contact-item, .wsp-btn, .demo-card, .demo-visit-btn';
+  const HOVER_SEL = 'a, button, label, summary, [onclick], select, .filter-btn, .tipo-card, .faq-q, .hamburger, .cta-btn-primary, .cta-btn-secondary, .nav-cta, .btn, .card, .srv-card, .srv-full-card, .pkg-card, .proy-card, .proceso-card, .contact-item, .wsp-btn, .demo-card, .demo-visit-btn';
   document.querySelectorAll(HOVER_SEL).forEach(el => {
     el.addEventListener('mouseenter', () => { dot.classList.add('hovered'); ring.classList.add('hovered'); });
     el.addEventListener('mouseleave', () => { dot.classList.remove('hovered'); ring.classList.remove('hovered'); });
@@ -109,7 +109,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
 // ── COTIZAR WIZARD ──
 const PRESUPUESTOS = [
-  '$80.000', '$120.000', '$150.000', '$200.000', '$250.000',
+  '$60.000', '$120.000', '$150.000', '$200.000', '$250.000',
   '$300.000', '$400.000', '$500.000', '$600.000', '$800.000', '$1.000.000+'
 ];
 let cotTipoSel = '';
@@ -160,9 +160,21 @@ function validarCotizacion() {
 }
 
 window.updatePresupuesto = function (v) {
+  const texto = PRESUPUESTOS[v] + ' CLP';
   const el = document.getElementById('presupuestoVal');
-  if (el) el.textContent = PRESUPUESTOS[v] + ' CLP';
+  if (el) el.textContent = texto;
+  const slider = document.getElementById('presupuestoSlider');
+  if (slider) {
+    const max = Number(slider.max) || 1;
+    slider.style.setProperty('--fill', (Number(v) / max * 100) + '%');
+    slider.setAttribute('aria-valuetext', texto);
+  }
 };
+// Sincroniza el monto si el navegador restauró una posición anterior del slider
+document.addEventListener('DOMContentLoaded', () => {
+  const slider = document.getElementById('presupuestoSlider');
+  if (slider) window.updatePresupuesto(slider.value);
+});
 
 window.selectTipo = function (el, val) {
   document.querySelectorAll('.tipo-card').forEach(c => c.classList.remove('selected'));
@@ -171,6 +183,17 @@ window.selectTipo = function (el, val) {
   const btn = document.getElementById('btnNext1');
   if (btn) btn.disabled = false;
 };
+
+document.addEventListener('DOMContentLoaded', () => {
+  const serviceNames = {
+    'bot-whatsapp': 'Bot de ventas para WhatsApp',
+    ecommerce: 'Tienda Online / E-commerce',
+    seo: 'SEO y posicionamiento en Google'
+  };
+  const selectedService = new URLSearchParams(window.location.search).get('servicio');
+  const serviceCard = selectedService && [...document.querySelectorAll('.tipo-card')].find(card => card.dataset.service === selectedService);
+  if (serviceCard && serviceNames[selectedService]) window.selectTipo(serviceCard, serviceNames[selectedService]);
+});
 
 window.validarPag2 = function () {
   const n = document.getElementById('cotNombre')?.value.trim();
